@@ -1,57 +1,40 @@
 package model;
 
-public class Cliente {
-    public String nome;
-    public String endereco;
-    public String cpf;
-    public String cnpj;
-    public String razaoSocial;
+public abstract class Cliente {
 
-    public Cliente(String nome, String endereco, String cpf, String cnpj, String razaoSocial) {
+    private String nome;
+    private String telefone;
+    private String endereco;
+
+
+    public Cliente(String nome, String endereco, String telefone) {
         this.nome = nome;
         this.endereco = endereco;
-        this.cpf = cpf;
-        this.cnpj = cnpj;
-        this.razaoSocial = razaoSocial;
+        this.telefone = telefone;
     }
 
-    public String listarCliente() {
+    public String getNome() {
         return nome;
     }
 
-    public void cadastrarCliente(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String listarEndereco() {
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEndereco() {
         return endereco;
     }
 
-    public void cadastrarEndereco(String endereco) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-
-    public String retornarCpf() {
-        return cpf;
-    }
-
-    public void cadastrarCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String retornarCnpj() {
-        return cnpj;
-    }
-
-    public void cadastrarCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public String retornarRazaoSocial() {
-        return razaoSocial;
-    }
-
-    public void cadastrarRazaoSocial(String razaoSocial) {
-        this.razaoSocial = razaoSocial;
-    }
 }
+

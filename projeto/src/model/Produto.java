@@ -1,47 +1,57 @@
 package model;
 
 public class Produto {
-    public String nome;
-    public double peso;
-    public double volume;
-    public double valor;
+    private int idProduto;
+    private String nome;
+    private double peso;
+    private double volume;
+    private double valor;
 
-    public Produto(String nome, double peso, double volume, double valor) {
+    public Produto(int idProduto, String nome, double peso, double volume, double valor) {
+        this.idProduto = idProduto;
         this.nome = nome;
         this.peso = peso;
         this.volume = volume;
         this.valor = valor;
     }
 
-    public String retornarNome() {
+    public int getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
+    }
+
+    public String getNome() {
         return nome;
     }
 
-    public void cadastrarNome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public double retornarPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void cadastrarPeso(double peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 
-    public double retornarVolume() {
+    public double getVolume() {
         return volume;
     }
 
-    public void cadastrarVolume(double volume) {
+    public void setVolume(double volume) {
         this.volume = volume;
     }
 
-    public double retornarValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void cadastrarValor(double valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 }

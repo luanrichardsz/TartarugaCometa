@@ -1,6 +1,7 @@
 package model;
 
 public class Entrega {
+    private int idEntrega;
     public boolean realizado;
 
     public Entrega(boolean realizado) {
