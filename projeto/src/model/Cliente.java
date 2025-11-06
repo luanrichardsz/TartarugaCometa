@@ -1,16 +1,22 @@
 package model;
 
-public abstract class Cliente {
-
+public class Cliente {
     private String nome;
-    private String telefone;
-    private String endereco;
+    private String cpf;
+    private String cnpj;
+    private String razaoSocial;
+    public Endereco enderecoCliente = new Endereco();
 
-
-    public Cliente(String nome, String endereco, String telefone) {
+    public Cliente(String nome, String cpf, String cnpj, String razaoSocial, Endereco endereco) {
         this.nome = nome;
-        this.endereco = endereco;
-        this.telefone = telefone;
+        this.cpf = cpf;
+        this.cnpj = cnpj;
+        this.razaoSocial = razaoSocial;
+        this.enderecoCliente = endereco;
+    }
+
+    public Cliente(){
+
     }
 
     public String getNome() {
@@ -21,20 +27,28 @@ public abstract class Cliente {
         this.nome = nome;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
     }
 }
 

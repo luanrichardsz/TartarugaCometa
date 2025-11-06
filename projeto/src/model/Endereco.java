@@ -1,115 +1,65 @@
 package model;
 
 public class Endereco {
-    private String cidadeOrigem;
-    private String ruaOrigem;
-    private int numeroOrigem;
-    private String bairroOrigem;
-    private String estadoOrigem;
+    private String cidade;
+    private String rua;
+    private int numero;
+    private String bairro;
+    private String estado;
 
-
-    private String cidadeDestino;
-    private String ruaDestino;
-    private int numeroDestino;
-    private String bairroDestino;
-    private String estadoDestino;
-
-    public Endereco(String cidadeOrigem, String ruaOrigem, int numeroOrigem, String bairroOrigem, String estadoOrigem, String cidadeDestino, String ruaDestino, int numeroDestino, String bairroDestino, String estadoDestino) {
-        this.cidadeOrigem = cidadeOrigem;
-        this.ruaOrigem = ruaOrigem;
-        this.numeroOrigem = numeroOrigem;
-        this.bairroOrigem = bairroOrigem;
-        this.estadoOrigem = estadoOrigem;
-        this.cidadeDestino = cidadeDestino;
-        this.ruaDestino = ruaDestino;
-        this.numeroDestino = numeroDestino;
-        this.bairroDestino = bairroDestino;
-        this.estadoDestino = estadoDestino;
+    public Endereco(String cidade, String rua, int numero, String bairro, String estado) {
+        this.cidade = cidade;
+        this.rua = rua;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.estado = estado;
     }
 
-    public String getCidadeOrigem() {
-        return cidadeOrigem;
+    public Endereco(){
+
     }
 
-    public void setCidadeOrigem(String cidadeOrigem) {
-        this.cidadeOrigem = cidadeOrigem;
+    public String getCidade() {
+        return cidade;
     }
 
-    public String getRuaOrigem() {
-        return ruaOrigem;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
-    public void setRuaOrigem(String ruaOrigem) {
-        this.ruaOrigem = ruaOrigem;
+    public String getRua() {
+        return rua;
     }
 
-    public int getNumeroOrigem() {
-        return numeroOrigem;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
-    public void setNumeroOrigem(int numeroOrigem) {
-        this.numeroOrigem = numeroOrigem;
+    public int getNumero() {
+        return numero;
     }
 
-    public String getBairroOrigem() {
-        return bairroOrigem;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
-    public void setBairroOrigem(String bairroOrigem) {
-        this.bairroOrigem = bairroOrigem;
+    public String getBairro() {
+        return bairro;
     }
 
-    public String getEstadoOrigem() {
-        return estadoOrigem;
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
-    public void setEstadoOrigem(String estadoOrigem) {
-        this.estadoOrigem = estadoOrigem;
+    public String getEstado() {
+        return estado;
     }
 
-    public String getCidadeDestino() {
-        return cidadeDestino;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public void setCidadeDestino(String cidadeDestino) {
-        this.cidadeDestino = cidadeDestino;
-    }
-
-    public String getRuaDestino() {
-        return ruaDestino;
-    }
-
-    public void setRuaDestino(String ruaDestino) {
-        this.ruaDestino = ruaDestino;
-    }
-
-    public int getNumeroDestino() {
-        return numeroDestino;
-    }
-
-    public void setNumeroDestino(int numeroDestino) {
-        this.numeroDestino = numeroDestino;
-    }
-
-    public String getBairroDestino() {
-        return bairroDestino;
-    }
-
-    public void setBairroDestino(String bairroDestino) {
-        this.bairroDestino = bairroDestino;
-    }
-
-    public String getEstadoDestino() {
-        return estadoDestino;
-    }
-
-    public void setEstadoDestino(String estadoDestino) {
-        this.estadoDestino = estadoDestino;
-    }
-
-    public String toString(){
-        return "\n==== Endereço da Viagem ====" +
-               "\nProduto saindo da " + getRuaOrigem() + " nº" + getNumeroOrigem() + ", bairro " + getBairroOrigem() + ", cidade " + getCidadeOrigem() + ", estado " + getEstadoOrigem() + "." +
-               "\nSe deslocando para " + getRuaDestino() + " nº " + getNumeroDestino() + ", bairro " + getBairroDestino() + ", cidade " + getCidadeDestino() + ", estado " + getEstadoDestino() + "." ;
+    public String getEndereco(){
+        return "Rua " + getRua() + ", nº " + getNumero() + ", bairro " + getBairro() + ", cidade " + getCidade() + ", estado " + getEstado() + ".";
     }
 }

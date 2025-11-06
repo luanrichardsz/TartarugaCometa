@@ -1,26 +1,17 @@
 package model;
 
 public class Produto {
-    private int idProduto;
+
     private String nome;
     private double peso;
     private double volume;
     private double valor;
 
-    public Produto(int idProduto, String nome, double peso, double volume, double valor) {
-        this.idProduto = idProduto;
+    public Produto(String nome, double peso, double volume, double valor) {
         this.nome = nome;
         this.peso = peso;
         this.volume = volume;
         this.valor = valor;
-    }
-
-    public int getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(int idProduto) {
-        this.idProduto = idProduto;
     }
 
     public String getNome() {
@@ -54,4 +45,14 @@ public class Produto {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public String toString(){
+        return "\n=== Produto ===" +
+                "\nDados do Produto:" +
+                "\nNome: " + getNome() +
+                "\nPeso: " + getPeso() +
+                "\nVolume: " + getVolume() +
+                "\nValor: " + getValor();
+    }
+
 }
