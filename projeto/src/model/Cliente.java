@@ -50,5 +50,22 @@ public class Cliente {
     public void setRazaoSocial(String razaoSocial) {
         this.razaoSocial = razaoSocial;
     }
+
+    public String toString(){
+        String tipoCliente;
+
+        if (this.cnpj != null && !this.cnpj.isEmpty()){
+            tipoCliente = "Juridico";
+        } else {
+            tipoCliente = "Fisico";
+        }
+
+        return "\n=== Dados do Cliente " + tipoCliente + " ===\n" +
+               "Nome: " + getNome() +
+               "\nCPF: " + getCpf() +
+               "\nCNPJ: " + getCnpj() +
+               "\nRazão Social: " + getRazaoSocial() +
+               "\n" + enderecoCliente;
+    }
 }
 

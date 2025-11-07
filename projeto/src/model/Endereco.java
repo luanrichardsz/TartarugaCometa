@@ -59,7 +59,7 @@ public class Endereco {
         this.estado = estado;
     }
 
-    public String getEndereco(){
-        return "Rua " + getRua() + ", nº " + getNumero() + ", bairro " + getBairro() + ", cidade " + getCidade() + ", estado " + getEstado() + ".";
+    public String toString(){
+        return getRua() + ", nº " + getNumero() + ", bairro " + getBairro() + ", cidade " + getCidade() + ", estado " + getEstado() + ".";
     }
 }
