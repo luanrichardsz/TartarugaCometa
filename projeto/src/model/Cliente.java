@@ -5,7 +5,7 @@ public class Cliente {
     private String cpf;
     private String cnpj;
     private String razaoSocial;
-    public Endereco enderecoCliente = new Endereco();
+    public Endereco enderecoCliente;
 
     public Cliente(String nome, String cpf, String cnpj, String razaoSocial, Endereco endereco) {
         this.nome = nome;
@@ -13,10 +13,6 @@ public class Cliente {
         this.cnpj = cnpj;
         this.razaoSocial = razaoSocial;
         this.enderecoCliente = endereco;
-    }
-
-    public Cliente(){
-
     }
 
     public String getNome() {
@@ -54,7 +50,7 @@ public class Cliente {
     public String toString(){
         String tipoCliente;
 
-        if (this.cnpj != null && !this.cnpj.isEmpty()){
+        if (this.cnpj != null && !this.cnpj.isEmpty()){ //||
             tipoCliente = "Juridico";
         } else {
             tipoCliente = "Fisico";
@@ -65,7 +61,7 @@ public class Cliente {
                "\nCPF: " + getCpf() +
                "\nCNPJ: " + getCnpj() +
                "\nRazão Social: " + getRazaoSocial() +
-               "\n" + enderecoCliente;
+               "\n" + enderecoCliente + "\n";
     }
 }
 

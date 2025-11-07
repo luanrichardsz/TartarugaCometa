@@ -3,20 +3,16 @@ package model;
 public class Endereco {
     private String cidade;
     private String rua;
-    private int numero;
+    private String numero;
     private String bairro;
     private String estado;
 
-    public Endereco(String cidade, String rua, int numero, String bairro, String estado) {
+    public Endereco(String cidade, String rua, String numero, String bairro, String estado) {
         this.cidade = cidade;
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
         this.estado = estado;
-    }
-
-    public Endereco(){
-
     }
 
     public String getCidade() {
@@ -35,11 +31,11 @@ public class Endereco {
         this.rua = rua;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

@@ -47,12 +47,12 @@ public class Produto {
     }
 
     public String toString(){
-        return "\n=== Produtos ===" +
+        return "\n\n=== Produtos ===" +
                 "\nDados do Produto:" +
                 "\nNome: " + getNome() +
                 "\nPeso: " + getPeso() +
                 "\nVolume: " + getVolume() +
-                "\nValor: " + getValor() + "\n";
+                "\nValor: " + getValor() + "\n\n";
     }
 
 }

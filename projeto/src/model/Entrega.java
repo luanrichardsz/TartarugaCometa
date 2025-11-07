@@ -9,15 +9,15 @@ public class Entrega {
     private int idEntrega;
     private boolean entregue;
     private List<Produto> produto;
-    public Cliente clienteJuridico;
-    public Cliente clienteFisico;
+    public Cliente clienteRemetente;
+    public Cliente clienteDestinatario;
 
-    public Entrega(int idEntrega, boolean entregue, Produto produto, Cliente clienteJuridico, Cliente clienteFisico) {
+    public Entrega(int idEntrega, boolean entregue, Produto produto, Cliente clienteRemetente, Cliente clienteDestinatario) {
         this.idEntrega = idEntrega;
         this.entregue = entregue;
         this.produto = Collections.singletonList(produto);
-        this.clienteJuridico = clienteJuridico;
-        this.clienteFisico = clienteFisico;
+        this.clienteRemetente = clienteRemetente;
+        this.clienteDestinatario = clienteDestinatario;
     }
 
     public int getIdEntrega() {
@@ -44,20 +44,20 @@ public class Entrega {
         this.produto = produto;
     }
 
-    public Cliente getClienteJuridico() {
-        return clienteJuridico;
+    public Cliente getClienteRemetente() {
+        return clienteRemetente;
     }
 
-    public void setClienteJuridico(Cliente clienteJuridico) {
-        this.clienteJuridico = clienteJuridico;
+    public void setClienteRemetente(Cliente clienteRemetente) {
+        this.clienteRemetente = clienteRemetente;
     }
 
-    public Cliente getClienteFisico() {
-        return clienteFisico;
+    public Cliente getClienteDestinatario() {
+        return clienteDestinatario;
     }
 
-    public void setClienteFisico(Cliente clienteFisico) {
-        this.clienteFisico = clienteFisico;
+    public void setClienteDestinatario(Cliente clienteDestinatario) {
+        this.clienteDestinatario = clienteDestinatario;
     }
 
     @Override
@@ -65,8 +65,8 @@ public class Entrega {
         return "\n==== Entrega ====" +
                "\nEntrega número: " + getIdEntrega() +
                "\nFoi entregue? " + (entregue ? "Sim" : "Não") + "." +
-               "\n\nCliente Remetente: " + clienteJuridico +
-               "\n\nCliente Destinatario: " + clienteFisico +
+               "\n\nCliente Remetente: " + clienteRemetente +
+               "\n\nCliente Destinatario: " + clienteDestinatario +
                "\n" + produto;
     }
 }
