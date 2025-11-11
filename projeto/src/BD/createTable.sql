@@ -1,0 +1,46 @@
+START TRANSACTION; -- STARTAR UM CHECKPOINT
+BEGIN; -- STARTAR UM CHECKPOINT
+ROLLBACK; -- DESFAZER O QUE VOCÊ FEZ E VOLTAR NO CHECKPOINT
+COMMIT; -- SALVAR AS MUDANÇAS FEITAS
+
+CREATE TABLE Endereco (
+	idEndereco SERIAL PRIMARY KEY,
+	cidade VARCHAR(58) NOT NULL,
+	rua VARCHAR(80) NOT NULL,
+	numero VARCHAR(10) NOT NULL,
+	bairro VARCHAR(50) NOT NULL,
+	estado VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Cliente (
+	idCliente SERIAL PRIMARY KEY,
+	nome VARCHAR(180) NOT NULL,
+	cpf_cnpj VARCHAR(18) NOT NULL UNIQUE,
+	razaoSocial VARCHAR(170) UNIQUE,
+	isFisico BOOLEAN NOT NULL,
+	Endereco_ID INTEGER NOT NULL REFERENCES Endereco(idEndereco)
+);
+
+CREATE TABLE Produto (
+	idProduto SERIAL PRIMARY KEY,
+	nome VARCHAR(40) NOT NULL,
+	peso DOUBLE PRECISION,
+	volume DOUBLE PRECISION,
+	valor NUMERIC(10,2)
+);
+
+CREATE TABLE Entrega (
+	idEntrega SERIAL PRIMARY KEY,
+	realizado BOOLEAN NOT NULL default false,
+	PRODUTO_id INTEGER NOT NULL REFERENCES Produto(idProduto), -- vindo da tabela PRODUTO
+	clienteRemetente_ID INTEGER NOT NULL REFERENCES Cliente(idCliente), -- vindo da tabela CLIENTE
+	clienteDestinatario_ID INTEGER NOT NULL REFERENCES Cliente(idCliente) -- vindo da tabela CLIENTE
+);
+
+CREATE TABLE Produto_Entrega (
+	entrega_ID INTEGER NOT NULL REFERENCES Entrega (idEntrega) ON DELETE CASCADE,
+	produto_ID INTEGER NOT NULL REFERENCES Produto (idProduto) ON DELETE CASCADE,
+	quantidade INTEGER NOT NULL
+);
+
+DROP TABLE Endereco, Cliente, Produto, Entrega, Produto_Entrega;

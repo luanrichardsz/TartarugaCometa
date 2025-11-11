@@ -2,17 +2,17 @@ package model;
 
 public class Cliente {
     private String nome;
-    private String cpf;
-    private String cnpj;
+    private String cpfCnpj;
     private String razaoSocial;
     public Endereco enderecoCliente;
+    public boolean isFisico;
 
-    public Cliente(String nome, String cpf, String cnpj, String razaoSocial, Endereco endereco) {
+    public Cliente(String nome, String cpfCnpj, String razaoSocial, Endereco enderecoCliente) {
         this.nome = nome;
-        this.cpf = cpf;
-        this.cnpj = cnpj;
+        this.cpfCnpj = cpfCnpj;
         this.razaoSocial = razaoSocial;
-        this.enderecoCliente = endereco;
+        this.enderecoCliente = enderecoCliente;
+        this.isFisico = isFisico();
     }
 
     public String getNome() {
@@ -23,20 +23,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
     public String getRazaoSocial() {
@@ -47,21 +39,32 @@ public class Cliente {
         this.razaoSocial = razaoSocial;
     }
 
-    public String toString(){
-        String tipoCliente;
+    public Endereco getEnderecoCliente() {
+        return enderecoCliente;
+    }
 
-        if (this.cnpj != null && !this.cnpj.isEmpty()){ //||
-            tipoCliente = "Juridico";
-        } else {
-            tipoCliente = "Fisico";
-        }
+    public void setEnderecoCliente(Endereco enderecoCliente) {
+        this.enderecoCliente = enderecoCliente;
+    }
 
-        return "\n=== Dados do Cliente " + tipoCliente + " ===\n" +
-               "Nome: " + getNome() +
-               "\nCPF: " + getCpf() +
-               "\nCNPJ: " + getCnpj() +
-               "\nRazão Social: " + getRazaoSocial() +
-               "\n" + enderecoCliente + "\n";
+    public boolean isFisico() {
+        return isFisico;
+    }
+
+    public void setFisico(boolean fisico) {
+        isFisico = fisico;
+    }
+
+    //Validação no controller sobre CPF e CNPJ
+
+
+    @Override
+    public String toString() {
+        return  "\nNome='" + nome + '\'' +
+                "\ncpfCnpj='" + cpfCnpj + '\'' +
+                "\nrazaoSocial='" + razaoSocial + '\'' +
+                "\nenderecoCliente=" + enderecoCliente +
+                '}';
     }
 }
 
