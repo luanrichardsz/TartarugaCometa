@@ -8,7 +8,7 @@ public class ConnectionBD {
     public static void main(String[] args) {
         try {
             Connection connection = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/byte_bank", "postgres", "1234");
+                    .getConnection("jdbc:postgresql://localhost:5432/tartaruga_cometa", "postgres", "1234");
 
             System.out.println("Conexão com BD com sucesso!");
 
