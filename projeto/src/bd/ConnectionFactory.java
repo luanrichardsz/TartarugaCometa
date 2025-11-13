@@ -1,0 +1,20 @@
+package bd;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConnectionFactory {
+    String URL = "jdbc:postgresql://localhost:5432/tartaruga_cometa";
+    String USERNAME = "postgres";
+    String PASSWORD = "1234";
+
+    public Connection getConnection() {
+        try {
+            return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

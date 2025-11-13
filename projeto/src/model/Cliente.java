@@ -12,7 +12,7 @@ public class Cliente {
         this.cpfCnpj = cpfCnpj;
         this.razaoSocial = razaoSocial;
         this.enderecoCliente = enderecoCliente;
-        this.isFisico = isFisico();
+        this.tipoCliente();
     }
 
     public String getNome() {
@@ -55,9 +55,16 @@ public class Cliente {
         isFisico = fisico;
     }
 
-    //Validação no controller sobre CPF e CNPJ
+    //Validação de CPF e CNPJ
+    public void tipoCliente(){
+        if (getCpfCnpj().length() == 11) {
+            isFisico = true;
+        } else if (getCpfCnpj().length() == 14) {
+            isFisico = false;
+        }
+    }
 
-
+    /*
     @Override
     public String toString() {
         return  "\nNome='" + nome + '\'' +
@@ -66,5 +73,6 @@ public class Cliente {
                 "\nenderecoCliente=" + enderecoCliente +
                 '}';
     }
+     */
 }
 

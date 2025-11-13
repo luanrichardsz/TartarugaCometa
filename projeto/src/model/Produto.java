@@ -2,6 +2,7 @@ package model;
 
 public class Produto {
 
+    private int id;
     private String nome;
     private double peso;
     private double volume;
@@ -45,6 +46,11 @@ public class Produto {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public int getIdProduto() {
+        return id;
+    }
+    public void setId(int id) {}
 
     public String toString(){
         return "\n\n=== Produtos ===" +
