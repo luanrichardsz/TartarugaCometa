@@ -1,7 +1,7 @@
 package model;
 
 public class Endereco {
-    private int id;
+    private int idEndereco;
     private String cidade;
     private String rua;
     private String numero;
@@ -57,11 +57,11 @@ public class Endereco {
     }
 
     public int getId() {
-        return id;
+        return idEndereco;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idEndereco = id;
     }
 
     public String toString(){

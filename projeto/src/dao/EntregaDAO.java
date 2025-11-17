@@ -1,7 +1,9 @@
+/*
 package dao;
 
 import bd.ConnectionFactory;
 import model.Entrega;
+import model.Produto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,18 +19,55 @@ public class EntregaDAO {
     }
 
     public void cadastrarEntrega(Entrega entrega) {
-        String sql = "INSERT INTO Entrega (realizado, PRODUTO_id, clienteRemetente_ID, clienteDestinatario_ID) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Entrega (realizado, clienteRemetente_ID, clienteDestinatario_ID) VALUES (?, ?, ?)";
 
         try (Connection conn = connection.getConnection()){
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setBoolean(1, entrega.isEntregue());
-            ps.setInt(2, entrega.getIdEntrega());
-            ps.setInt(3, entrega.getProduto().getIdProduto());
+            ps.setInt(2, entrega.getClienteDestinatario().getIdCliente());
+            ps.setInt(3, entrega.getClienteRemetente().getIdCliente());
 
+            System.out.println("Dados dos Clientes e Dados da Entrega Cadastrado");
 
+            ps.executeUpdate();
+
+            //Pegar o ID da Entrega que foi criada
+            int idEntrega = -1;
+            try (java.sql.ResultSet rs = ps.getGeneratedKeys()){
+                if (rs.next()){
+                    idEntrega = rs.getInt(1);
+                } else {
+                    throw new SQLException("Falha ao criar ID da Entrega, nenhum retornado");
+                }
+            }
+
+            //Preparar o insert da table produto_entrega
+            String sqlProdutoEntrega = "INSERT INTO Produto_Entrega (entrega_ID, produto_ID, quantidade) VALUES (?, ?, ?)";
+            PreparedStatement psProdutoEntrega = conn.prepareStatement(sqlProdutoEntrega);
+
+            //finalizar o for
+            for (Produto produto : entrega.getProdutos()){
+                psProdutoEntrega.setInt(1, idEntrega);
+                psProdutoEntrega.setInt(2, pr);
+            }
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
     }
 }
+
+/*
+CREATE TABLE Entrega (
+	idEntrega SERIAL PRIMARY KEY,
+	realizado BOOLEAN NOT NULL default false,
+	clienteRemetente_ID INTEGER NOT NULL REFERENCES Cliente(idCliente), -- vindo da tabela CLIENTE
+	clienteDestinatario_ID INTEGER NOT NULL REFERENCES Cliente(idCliente) -- vindo da tabela CLIENTE
+);
+
+CREATE TABLE Produto_Entrega (
+	entrega_ID INTEGER NOT NULL REFERENCES Entrega (idEntrega) ON DELETE CASCADE,
+	produto_ID INTEGER NOT NULL REFERENCES Produto (idProduto) ON DELETE CASCADE,
+	quantidade INTEGER NOT NULL
+);
+ */

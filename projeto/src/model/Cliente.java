@@ -1,6 +1,7 @@
 package model;
 
 public class Cliente {
+    private int idCliente;
     private String nome;
     private String cpfCnpj;
     private String razaoSocial;
@@ -13,6 +14,14 @@ public class Cliente {
         this.razaoSocial = razaoSocial;
         this.enderecoCliente = enderecoCliente;
         this.tipoCliente();
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNome() {

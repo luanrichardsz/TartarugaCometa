@@ -1,23 +1,24 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Entrega {
 
     private int idEntrega;
     private boolean entregue;
-    private List<Produto> produto;
     public Cliente clienteRemetente;
     public Cliente clienteDestinatario;
 
-    public Entrega(int idEntrega, boolean entregue, Produto produto, Cliente clienteRemetente, Cliente clienteDestinatario) {
-        this.idEntrega = idEntrega;
+    private List<Produto> produtos;
+
+    public Entrega(boolean entregue, Cliente clienteRemetente, Cliente clienteDestinatario) {
         this.entregue = entregue;
-        this.produto = Collections.singletonList(produto);
         this.clienteRemetente = clienteRemetente;
         this.clienteDestinatario = clienteDestinatario;
+
+        // inicializar a lista de produtos
+        this.produtos = new ArrayList<>();
     }
 
     public int getIdEntrega() {
@@ -36,14 +37,6 @@ public class Entrega {
         this.entregue = entregue;
     }
 
-    public List<Produto> getProduto() {
-        return produto;
-    }
-
-    public void setProduto(List<Produto> produto) {
-        this.produto = produto;
-    }
-
     public Cliente getClienteRemetente() {
         return clienteRemetente;
     }
@@ -60,6 +53,15 @@ public class Entrega {
         this.clienteDestinatario = clienteDestinatario;
     }
 
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void addProdutos(Produto produtos) {
+        this.produtos.add(produtos);
+    }
+
+    /*
     @Override
     public String toString() {
         return "\n==== Entrega ====" +
@@ -69,4 +71,5 @@ public class Entrega {
                "\n\nCliente Destinatario: " + clienteDestinatario +
                "\n" + produto;
     }
+     */
 }
