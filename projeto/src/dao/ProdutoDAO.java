@@ -6,6 +6,7 @@ import model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ProdutoDAO {
 
@@ -19,7 +20,7 @@ public class ProdutoDAO {
         String sql = "INSERT INTO Produto (nome, peso, volume, valor) VALUES (?, ?, ?,?)";
 
         try (Connection conn = connection.getConnection()){
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, produto.getNome());
             ps.setDouble(2, produto.getPeso());
@@ -29,6 +30,17 @@ public class ProdutoDAO {
             System.out.println("Produto Cadastrado");
 
             ps.execute();
+
+            //Pegar o ID da Entrega que foi criada
+            int idProduto = -1;
+            try (java.sql.ResultSet rs = ps.getGeneratedKeys()){
+                if (rs.next()){
+                    idProduto = rs.getInt(1);
+                    produto.setIdProduto(idProduto);
+                } else {
+                    throw new SQLException("Falha ao criar ID do Produto, nenhum retornado");
+                }
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

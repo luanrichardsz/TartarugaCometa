@@ -3,9 +3,7 @@ package dao;
 import bd.ConnectionFactory;
 import model.Cliente;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ClienteDAO {
     //Construtor para chamar a conexão com o banco de dados
@@ -19,7 +17,7 @@ public class ClienteDAO {
         String sql = "INSERT INTO cliente (nome, cpf_cnpj, razaoSocial, isFisico, Endereco_ID) VALUES (?, ?, ?, ?, ?)";
 
         try(Connection conn = connection.getConnection()){
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getCpfCnpj());
@@ -31,10 +29,31 @@ public class ClienteDAO {
 
             ps.execute();
 
+            //Pegar o ID da Entrega que foi criada
+            int idCliente = -1;
+            try (java.sql.ResultSet rs = ps.getGeneratedKeys()){
+                if (rs.next()){
+                    idCliente = rs.getInt(1);
+                    cliente.setIdCliente(idCliente);
+                } else {
+                    throw new SQLException("Falha ao criar ID do cliente, nenhum retornado");
+                }
+            }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public void listarClientes(){
+        String sqlListarTodos = "SELECT * FROM cliente";
 
+        try(Connection conn = connection.getConnection()){
+            PreparedStatement ps = conn.prepareStatement(sqlListarTodos);
+
+            ps.executeUpdate();
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+        }
     }
 }

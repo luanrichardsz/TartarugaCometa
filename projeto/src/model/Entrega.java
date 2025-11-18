@@ -9,8 +9,7 @@ public class Entrega {
     private boolean entregue;
     public Cliente clienteRemetente;
     public Cliente clienteDestinatario;
-
-    private List<Produto> produtos;
+    private List<ProdutoEntrega> produtos;
 
     public Entrega(boolean entregue, Cliente clienteRemetente, Cliente clienteDestinatario) {
         this.entregue = entregue;
@@ -53,12 +52,12 @@ public class Entrega {
         this.clienteDestinatario = clienteDestinatario;
     }
 
-    public List<Produto> getProdutos() {
+    public List<ProdutoEntrega> getProdutos() {
         return produtos;
     }
 
-    public void addProdutos(Produto produtos) {
-        this.produtos.add(produtos);
+    public void setProdutos(List<ProdutoEntrega> produtos) {
+        this.produtos = produtos;
     }
 
     /*

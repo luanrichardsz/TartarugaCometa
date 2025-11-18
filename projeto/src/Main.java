@@ -7,6 +7,7 @@ public class Main {
         EnderecoDAO daoEndereco = new EnderecoDAO();
         ClienteDAO daoCliente = new ClienteDAO();
         ProdutoDAO daoProduto = new ProdutoDAO();
+        EntregaDAO daoEntrega = new EntregaDAO();
 
         Endereco endereco01 = new Endereco("Petrolina", "Rua Pedra Grande", "84-B", "Jardim Maravilha", "PE");
         daoEndereco.cadastrarEndereco(endereco01);
@@ -26,11 +27,11 @@ public class Main {
         Produto produto02 = new Produto("Arroz", 2000.00, 2.67, 8000.00);
         daoProduto.cadastrarProduto(produto02);
 
-        /*
         Entrega entrega01 = new Entrega(false , clienteD01, clienteR01);
-        daoEntrega.cadastrarEntrega(entrega01);
+        ProdutoEntrega produtoEntrega01 = new ProdutoEntrega(produto02, 4);
 
-        System.out.println(entrega01);
-         */
+        daoEntrega.cadastrarEntrega(entrega01, produtoEntrega01);
+
+        daoCliente.listarClientes();
     }
 }

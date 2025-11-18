@@ -1,9 +1,8 @@
-/*
 package dao;
 
 import bd.ConnectionFactory;
 import model.Entrega;
-import model.Produto;
+import model.ProdutoEntrega;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +17,7 @@ public class EntregaDAO {
         this.connection = new ConnectionFactory();
     }
 
-    public void cadastrarEntrega(Entrega entrega) {
+    public void cadastrarEntrega(Entrega entrega, ProdutoEntrega produtoEntrega) {
         String sql = "INSERT INTO Entrega (realizado, clienteRemetente_ID, clienteDestinatario_ID) VALUES (?, ?, ?)";
 
         try (Connection conn = connection.getConnection()){
@@ -46,11 +45,14 @@ public class EntregaDAO {
             String sqlProdutoEntrega = "INSERT INTO Produto_Entrega (entrega_ID, produto_ID, quantidade) VALUES (?, ?, ?)";
             PreparedStatement psProdutoEntrega = conn.prepareStatement(sqlProdutoEntrega);
 
-            //finalizar o for
-            for (Produto produto : entrega.getProdutos()){
-                psProdutoEntrega.setInt(1, idEntrega);
-                psProdutoEntrega.setInt(2, pr);
-            }
+            psProdutoEntrega.setInt(1, idEntrega);
+            psProdutoEntrega.setInt(2, produtoEntrega.getProduto().getIdProduto());
+            psProdutoEntrega.setInt(3, produtoEntrega.getQuantidade());
+
+            psProdutoEntrega.executeUpdate();
+
+            System.out.println("Produto cadastrado em Entrega!");
+
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
