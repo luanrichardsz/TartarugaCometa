@@ -31,7 +31,5 @@ public class Main {
         ProdutoEntrega produtoEntrega01 = new ProdutoEntrega(produto02, 4);
 
         daoEntrega.cadastrarEntrega(entrega01, produtoEntrega01);
-
-        daoCliente.listarClientes();
     }
 }
