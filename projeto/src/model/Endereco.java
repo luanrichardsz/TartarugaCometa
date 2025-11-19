@@ -2,27 +2,21 @@ package model;
 
 public class Endereco {
     private int idEndereco;
-    private String cidade;
     private String rua;
     private String numero;
     private String bairro;
+    private String cidade;
     private String estado;
 
-    public Endereco(String cidade, String rua, String numero, String bairro, String estado) {
-        this.cidade = cidade;
+    public Endereco(String rua, String numero, String bairro, String cidade, String estado) {
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
+        this.cidade = cidade;
         this.estado = estado;
     }
 
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+    public Endereco(){}
 
     public String getRua() {
         return rua;
@@ -48,6 +42,14 @@ public class Endereco {
         this.bairro = bairro;
     }
 
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
     public String getEstado() {
         return estado;
     }
@@ -64,7 +66,9 @@ public class Endereco {
         this.idEndereco = id;
     }
 
-    public String toString(){
-        return getRua() + ", nº " + getNumero() + ", bairro " + getBairro() + ", cidade " + getCidade() + ", estado " + getEstado() + ".";
+    @Override
+    public String toString() {
+        return "\nEndereco{ " +
+                "Rua " + rua + ", numero " + numero + ", bairro " + bairro + ", cidade " + cidade + ", estado " + estado + "}";
     }
 }

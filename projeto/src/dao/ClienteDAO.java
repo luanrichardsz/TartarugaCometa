@@ -2,12 +2,16 @@ package dao;
 
 import bd.ConnectionFactory;
 import model.Cliente;
+import model.Endereco;
 
 import java.sql.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ClienteDAO {
     //Construtor para chamar a conexão com o banco de dados
     private ConnectionFactory connection;
+    Endereco endereco = new Endereco();
 
     public ClienteDAO() {
         this.connection = new ConnectionFactory();
@@ -45,15 +49,28 @@ public class ClienteDAO {
         }
     }
 
-    public void listarClientes(){
-        String sqlListarTodos = "SELECT * FROM cliente";
 
-        try(Connection conn = connection.getConnection()){
-            PreparedStatement ps = conn.prepareStatement(sqlListarTodos);
+    public Set<Cliente> listarClientes(){
+        String sql = "SELECT nome, cpf_Cnpj, razaoSocial, endereco_id from Cliente";
 
-            ps.executeUpdate();
-    } catch (SQLException e) {
-        throw new RuntimeException(e);
+        Set<Cliente> clientes = new HashSet<>();
+
+        try(Connection cnn = connection.getConnection()){
+            PreparedStatement ps = cnn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                String nome = rs.getString("nome");
+                String cpfCnpj = rs.getString("cpf_Cnpj");
+                String razaoSocial = rs.getString("razaoSocial");
+
+                clientes.add(new Cliente(nome, cpfCnpj, razaoSocial, endereco));
+            }
+        } catch (Exception e){
+            throw new RuntimeException(e);
         }
+
+        System.out.println(clientes);
+        return clientes;
     }
 }

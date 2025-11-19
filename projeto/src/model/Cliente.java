@@ -73,15 +73,12 @@ public class Cliente {
         }
     }
 
-    /*
     @Override
     public String toString() {
-        return  "\nNome='" + nome + '\'' +
-                "\ncpfCnpj='" + cpfCnpj + '\'' +
-                "\nrazaoSocial='" + razaoSocial + '\'' +
-                "\nenderecoCliente=" + enderecoCliente +
-                '}';
+        return  "\nCliente{" +
+                " Nome='" + nome + '\'' +
+                " cpfCnpj='" + cpfCnpj + '\'' +
+                " razaoSocial='" + razaoSocial + '\'' + "}";
     }
-     */
 }
 

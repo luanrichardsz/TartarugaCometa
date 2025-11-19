@@ -4,6 +4,9 @@ import bd.ConnectionFactory;
 import model.Endereco;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class EnderecoDAO {
 
@@ -40,5 +43,31 @@ public class EnderecoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Set<Endereco> listarEnderecos(){
+        String sql = "SELECT rua, numero, bairro, cidade, estado FROM endereco";
+
+        Set<Endereco> enderecos = new HashSet<>();
+
+        try(Connection conn = connection.getConnection()){
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                String rua = rs.getString("rua");
+                String numero = rs.getString("numero");
+                String bairro = rs.getString("bairro");
+                String cidade = rs.getString("cidade");
+                String estado = rs.getString("estado");
+
+                enderecos.add(new Endereco(rua ,numero, bairro, cidade, estado));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println(enderecos);
+        return enderecos;
     }
 }

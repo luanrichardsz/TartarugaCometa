@@ -58,18 +58,3 @@ public class EntregaDAO {
         }
     }
 }
-
-/*
-CREATE TABLE Entrega (
-	idEntrega SERIAL PRIMARY KEY,
-	realizado BOOLEAN NOT NULL default false,
-	clienteRemetente_ID INTEGER NOT NULL REFERENCES Cliente(idCliente), -- vindo da tabela CLIENTE
-	clienteDestinatario_ID INTEGER NOT NULL REFERENCES Cliente(idCliente) -- vindo da tabela CLIENTE
-);
-
-CREATE TABLE Produto_Entrega (
-	entrega_ID INTEGER NOT NULL REFERENCES Entrega (idEntrega) ON DELETE CASCADE,
-	produto_ID INTEGER NOT NULL REFERENCES Produto (idProduto) ON DELETE CASCADE,
-	quantidade INTEGER NOT NULL
-);
- */
