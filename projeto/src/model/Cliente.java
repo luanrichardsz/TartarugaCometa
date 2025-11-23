@@ -16,6 +16,8 @@ public class Cliente {
         this.tipoCliente();
     }
 
+    public Cliente(){};
+
     public int getIdCliente() {
         return idCliente;
     }
@@ -77,7 +79,7 @@ public class Cliente {
     public String toString() {
         return  "\nCliente{" +
                 " Nome='" + nome + '\'' +
-                " cpfCnpj='" + cpfCnpj + '\'' +
+                " cpf/Cnpj='" + cpfCnpj + '\'' +
                 " razaoSocial='" + razaoSocial + '\'' + "}";
     }
 }

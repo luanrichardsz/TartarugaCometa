@@ -5,8 +5,6 @@ import model.Endereco;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class EnderecoDAO {
 
@@ -45,10 +43,10 @@ public class EnderecoDAO {
         }
     }
 
-    public Set<Endereco> listarEnderecos(){
+    public ArrayList<Endereco> listarEnderecos(){
         String sql = "SELECT rua, numero, bairro, cidade, estado FROM endereco";
 
-        Set<Endereco> enderecos = new HashSet<>();
+        ArrayList<Endereco> enderecos = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
             PreparedStatement ps = conn.prepareStatement(sql);

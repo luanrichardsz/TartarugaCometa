@@ -31,7 +31,7 @@ CREATE TABLE Produto (
 
 CREATE TABLE Entrega (
 	idEntrega SERIAL PRIMARY KEY,
-	realizado BOOLEAN NOT NULL default false,
+	realizada BOOLEAN NOT NULL default false,
 	clienteRemetente_ID INTEGER NOT NULL REFERENCES Cliente(idCliente), -- vindo da tabela CLIENTE
 	clienteDestinatario_ID INTEGER NOT NULL REFERENCES Cliente(idCliente) -- vindo da tabela CLIENTE
 );

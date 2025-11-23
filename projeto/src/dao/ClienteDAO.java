@@ -5,8 +5,7 @@ import model.Cliente;
 import model.Endereco;
 
 import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class ClienteDAO {
     //Construtor para chamar a conexão com o banco de dados
@@ -50,10 +49,10 @@ public class ClienteDAO {
     }
 
 
-    public Set<Cliente> listarClientes(){
+    public ArrayList<Cliente> listarClientes(){
         String sql = "SELECT nome, cpf_Cnpj, razaoSocial, endereco_id from Cliente";
 
-        Set<Cliente> clientes = new HashSet<>();
+        ArrayList<Cliente> clientes = new ArrayList<>();
 
         try(Connection cnn = connection.getConnection()){
             PreparedStatement ps = cnn.prepareStatement(sql);

@@ -15,6 +15,8 @@ public class Produto {
         this.valor = valor;
     }
 
+    public Produto() {};
+
     public int getIdProduto() {
         return idProduto;
     }
@@ -54,15 +56,12 @@ public class Produto {
     public void setValor(double valor) {
         this.valor = valor;
     }
-}
-    /*
-    public String toString(){
-        return "\n\n=== Produtos ===" +
-                "\nDados do Produto:" +
-                "\nNome: " + getNome() +
-                "\nPeso: " + getPeso() +
-                "\nVolume: " + getVolume() +
-                "\nValor: " + getValor() + "\n\n";
-    }
 
-     */
+    public String toString(){
+        return "\nProdutos{" +
+                " Nome: " + nome + '\'' +
+                " Peso: " + peso + '\'' +
+                " Volume: " + volume + '\'' +
+                " Valor: " + valor + '\'' + "}" ;
+    }
+}

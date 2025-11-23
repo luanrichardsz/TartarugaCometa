@@ -6,8 +6,8 @@ public class Main {
 
         EnderecoDAO daoEndereco = new EnderecoDAO();
         ClienteDAO daoCliente = new ClienteDAO();
-//        ProdutoDAO daoProduto = new ProdutoDAO();
-//        EntregaDAO daoEntrega = new EntregaDAO();
+        ProdutoDAO daoProduto = new ProdutoDAO();
+        EntregaDAO daoEntrega = new EntregaDAO();
 
 //        Endereco endereco01 = new Endereco("Pedra Grande", "84-B", "Jardim Maravilha", "Petrolina", "PE");
 //        daoEndereco.cadastrarEndereco(endereco01);
@@ -26,16 +26,18 @@ public class Main {
         daoCliente.listarClientes();
 
 
-//
 //        Produto produto01 = new Produto("Feijão", 2000.00, 2.67, 8000.00);
 //        daoProduto.cadastrarProduto(produto01);
 //
 //        Produto produto02 = new Produto("Arroz", 2000.00, 2.67, 8000.00);
 //        daoProduto.cadastrarProduto(produto02);
-//
+
+        daoProduto.listarProdutos();
+
 //        Entrega entrega01 = new Entrega(false , clienteD01, clienteR01);
 //        ProdutoEntrega produtoEntrega01 = new ProdutoEntrega(produto02, 4);
-//
+        daoEntrega.listarEntregas();
+
 //        daoEntrega.cadastrarEntrega(entrega01, produtoEntrega01);
     }
 }

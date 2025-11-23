@@ -3,10 +3,8 @@ package dao;
 import bd.ConnectionFactory;
 import model.Produto;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class ProdutoDAO {
 
@@ -45,5 +43,30 @@ public class ProdutoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Produto> listarProdutos(){
+        String sql = "SELECT * FROM Produto";
+
+        ArrayList<Produto> produtos = new ArrayList<>();
+
+        try(Connection conn = connection.getConnection()){
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                String nome = rs.getString("nome");
+                double peso = rs.getDouble("peso");
+                double volume = rs.getDouble("volume");
+                double valor = rs.getDouble("valor");
+
+                produtos.add(new Produto(nome, peso, volume, valor));
+            }
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+        System.out.println(produtos);
+        return produtos;
     }
 }

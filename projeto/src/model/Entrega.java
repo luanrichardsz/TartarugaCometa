@@ -6,13 +6,15 @@ import java.util.List;
 public class Entrega {
 
     private int idEntrega;
-    private boolean entregue;
+    private boolean realizada;
     public Cliente clienteRemetente;
     public Cliente clienteDestinatario;
+
+    // Declarando a lista de produtos para o Produto_Entrega
     private List<ProdutoEntrega> produtos;
 
-    public Entrega(boolean entregue, Cliente clienteRemetente, Cliente clienteDestinatario) {
-        this.entregue = entregue;
+    public Entrega(boolean realizada, Cliente clienteRemetente, Cliente clienteDestinatario) {
+        this.realizada = realizada;
         this.clienteRemetente = clienteRemetente;
         this.clienteDestinatario = clienteDestinatario;
 
@@ -28,12 +30,12 @@ public class Entrega {
         this.idEntrega = idEntrega;
     }
 
-    public boolean isEntregue() {
-        return entregue;
+    public boolean isRealizada() {
+        return realizada;
     }
 
-    public void setEntregue(boolean entregue) {
-        this.entregue = entregue;
+    public void setRealizada(boolean realizada) {
+        this.realizada = realizada;
     }
 
     public Cliente getClienteRemetente() {
@@ -60,15 +62,21 @@ public class Entrega {
         this.produtos = produtos;
     }
 
-    /*
-    @Override
-    public String toString() {
-        return "\n==== Entrega ====" +
-               "\nEntrega número: " + getIdEntrega() +
-               "\nFoi entregue? " + (entregue ? "Sim" : "Não") + "." +
-               "\n\nCliente Remetente: " + clienteRemetente +
-               "\n\nCliente Destinatario: " + clienteDestinatario +
-               "\n" + produto;
+    public String toString(){
+        String listaProdutos = "" ;
+
+        for (ProdutoEntrega proEnt : produtos) {
+             listaProdutos = "\n Produto ID: " + proEnt.getProduto().getIdProduto() +
+                              " Quantidade: " + proEnt.getQuantidade();
+        }
+
+        return "\nEntrega {" +
+               "ID Entrega: " + getIdEntrega() +
+               " Realizada: " + isRealizada() +
+               " ID do Cliente Remetente: " + clienteRemetente.getIdCliente() +
+               " ID do Cliente Destinatario: " + clienteDestinatario.getIdCliente() +
+               " \nProdutos: " + listaProdutos + "}";
+
+
     }
-     */
 }
