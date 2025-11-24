@@ -21,6 +21,8 @@ public class Entrega {
         this.produtos = new ArrayList<>();
     }
 
+    public Entrega(){};
+
     public int getIdEntrega() {
         return idEntrega;
     }
@@ -66,14 +68,15 @@ public class Entrega {
 
         for (ProdutoEntrega proEnt : produtos) {
              listaProdutos += "\n Produto ID: " + proEnt.getProduto().getIdProduto() +
-                              " Quantidade: " + proEnt.getQuantidade();
+                              "\n Nome do Produto: " + proEnt.getProduto().getNome() +
+                              "\n Quantidade: " + proEnt.getQuantidade() + "\n";
         }
 
         return "\nEntrega {" +
                "ID Entrega: " + getIdEntrega() +
-               " Realizada: " + isRealizada() +
-               " ID do Cliente Remetente: " + clienteRemetente.getIdCliente() +
-               " ID do Cliente Destinatario: " + clienteDestinatario.getIdCliente() +
-               " \nProdutos: " + listaProdutos + "}\n";
+               ", Realizada: " + isRealizada() +
+               ", ID do Cliente Remetente: " + clienteRemetente.getIdCliente() +
+               ", ID do Cliente Destinatario: " + clienteDestinatario.getIdCliente() +
+               "\nProdutos: " + listaProdutos + "}";
     }
 }

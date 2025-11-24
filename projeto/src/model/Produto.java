@@ -60,8 +60,8 @@ public class Produto {
     public String toString(){
         return "\nProdutos{" +
                 " Nome: " + nome + '\'' +
-                " Peso: " + peso + '\'' +
-                " Volume: " + volume + '\'' +
-                " Valor: " + valor + '\'' + "}" ;
+                ", Peso: " + peso + '\'' +
+                ", Volume: " + volume + '\'' +
+                ", Valor: " + valor + '\'' + "}" ;
     }
 }

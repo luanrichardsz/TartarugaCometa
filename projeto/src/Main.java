@@ -18,14 +18,14 @@ public class Main {
 //        Endereco endereco01 = new Endereco("Pedra Grande", "84-B", "Jardim Maravilha", "Petrolina", "PE");
 //        daoEndereco.cadastrarEndereco(endereco01);
 //
-//        Endereco endereco02 = new Endereco("1ª Travessa Padre Nóbrega", "201-A", "Cavaleiro", "Jaboatão dos Guararapes" , "PE");
+//        Endereco endereco02 = new Endereco("1ª Travessa Padre Nóbrega", "201-A", "Cavaleiro", "Jaboatão dos Guararapes", "PE");
 //        daoEndereco.cadastrarEndereco(endereco02);
 //
-//        Cliente clienteR01 = new Cliente("Miguel Levi", "73989153000187", "Miguel e Levi Transportes ME",  endereco02);
-//        daoCliente.cadastrarCliente(clienteD01);
+//        Cliente clienteR01 = new Cliente("Miguel Levi", "73989153000187", "Miguel e Levi Transportes ME", endereco02);
+//        daoCliente.cadastrarCliente(clienteR01);
 //
 //        Cliente clienteD01 = new Cliente("Alícia Raquel Aline Vieira", "22131982178", null, endereco01);
-//        daoCliente.cadastrarCliente(clienteR01);
+//        daoCliente.cadastrarCliente(clienteD01);
 //
 //        Produto produto01 = new Produto("Feijão", 2000.00, 2.67, 8000.00);
 //        daoProduto.cadastrarProduto(produto01);
@@ -41,7 +41,7 @@ public class Main {
 //        mercadoriaEntrega01.add(produtoFeijao);
 //        mercadoriaEntrega01.add(produtoArroz);
 //
-//        Entrega entrega01 = new Entrega(false , clienteD01, clienteR01);
+//        Entrega entrega01 = new Entrega(false, clienteD01, clienteR01);
 //
 //        daoEntrega.cadastrarEntrega(entrega01, mercadoriaEntrega01);
 
@@ -78,11 +78,53 @@ public class Main {
 //        daoEntrega.cadastrarEntrega(entrega02, mercadoriasEntrega02);
 
 // --------------------------------------------------------------------------------------------------------------------------------
-        // Listando as Tabelas
+        // Cadastrando a Terceira Entrega (1 Entrega)
 
-        daoEndereco.listarEnderecos();
-        daoCliente.listarClientes();
-        daoProduto.listarProdutos();
+//        Endereco endereco05 = new Endereco("Rua Plantão", "87-C", "Deputado José Antônio Liberato", "Caruaru", "PE");
+//        daoEndereco.cadastrarEndereco(endereco05);
+//
+//        Endereco endereco06 = new Endereco("Rua João Ivo da Silva", "841", "Madalena", "Recife", "PE");
+//        daoEndereco.cadastrarEndereco(endereco06);
+//
+//        Cliente clienteR03 = new Cliente("Pietra e Maitê Doces & Salgados Ltda", "90192059000111", "Maipie Doces e Salgados", endereco05);
+//        daoCliente.cadastrarCliente(clienteR03);
+//
+//        Cliente clienteD03 = new Cliente("Rebeca Laura Souza", "30007624425", null, endereco06);
+//        daoCliente.cadastrarCliente(clienteD03);
+//
+//        Produto produto05 = new Produto("Pão Doce de Coco", 3.50 , 1.00, 10.00);
+//        daoProduto.cadastrarProduto(produto05);
+//
+//        ProdutoEntrega itemPaoDoce = new ProdutoEntrega(produto05, 5);
+//
+//        ArrayList<ProdutoEntrega> mercadoriasEntrega03 = new ArrayList<>();
+//        mercadoriasEntrega03.add(itemPaoDoce);
+//
+//        Entrega entrega03 = new Entrega(true, clienteR03, clienteD03);
+//        daoEntrega.cadastrarEntrega(entrega03, mercadoriasEntrega03);
+
+// --------------------------------------------------------------------------------------------------------------------------------
+//        Endereco enderecoTeste = new Endereco("La na rua", "84", "Varzea", "Recife", "PE");
+//        daoEndereco.cadastrarEndereco(enderecoTeste);
+//
+//        Cliente clienteTeste = new Cliente("Luan Richard", "84574154151", null, enderecoTeste);
+//        daoCliente.cadastrarCliente(clienteTeste);
+
+        // Funções
+
+//        daoEndereco.listarEnderecos();
+//        daoCliente.listarClientes();
+//        daoCliente.apagarCliente(7);
+//
+//        System.out.println("========================= DEPOIS DO DELETE DO CLIENTE TESTE ==========================");
+//        daoCliente.listarClientes();
+
+//        daoProduto.listarProdutos();
         daoEntrega.listarEntregas();
+        daoEntrega.alterarStatusEntrega(true, 1);
+
+        System.out.println("========================= DEPOIS DA MUDANÇA NO ID ENTREGA 1 ==========================");
+        daoEntrega.listarEntregas();
+
     }
 }

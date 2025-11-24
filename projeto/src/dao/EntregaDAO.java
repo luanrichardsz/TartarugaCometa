@@ -59,38 +59,22 @@ public class EntregaDAO {
     }
 
     public ArrayList<Entrega> listarEntregas(){
-        String sql = "\tSELECT \n" +
-                "    e.idEntrega,\n" +
-                "    e.realizada,\n" +
-                "    e.clienteRemetente_ID,\n" +
-                "    e.clienteDestinatario_ID,\n" +
-                "\n" +
-                "    p.idProduto,\n" +
-                "\t  pe.quantidade\n" +
-                "FROM Entrega e \n" +
-                "LEFT JOIN Produto_Entrega pe ON e.idEntrega = pe.entrega_ID\n" +
-                "LEFT JOIN Produto p ON pe.produto_ID = p.idProduto\n" +
-                "ORDER BY e.idEntrega;";
+        String sqlEntrega = "SELECT * FROM Entrega";
 
         ArrayList<Entrega> entregas = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sqlEntrega);
             ResultSet rs = ps.executeQuery();
 
             Entrega entregaAtual = null;
             int ultimoIdEntrega = 0;
 
             while (rs.next()){
-                //Tabela Entrega
-                int idEntrega = rs.getInt("identrega");
+                int idEntrega = rs.getInt("idEntrega");
                 boolean realizada = rs.getBoolean("realizada");
-                int remetente_id = rs.getInt("clienteRemetente_ID");
-                int destinatario_id = rs.getInt("clienteDestinatario_ID");
-
-                //Tabela Produto_Entrega
-                int idProduto = rs.getInt("idproduto");
-                int quantidade = rs.getInt("quantidade");
+                int remetente_id = rs.getInt("clienteremetente_id");
+                int destinatario_id = rs.getInt("clientedestinatario_id");
 
                 //Validação para os IDs
                 if(idEntrega != ultimoIdEntrega){
@@ -112,27 +96,58 @@ public class EntregaDAO {
 
                     //Mudando o valor da variavel ultimoIdEntrega
                     ultimoIdEntrega = idEntrega;
-
                 }
 
-                //Validação para saber se existe Produto
-                if (idProduto != 0){
-                    ProdutoEntrega proEnt = new ProdutoEntrega();
-                    Produto p = new Produto();
+                //SELECT do ProdutoEntrega
+                String sqlProdutosEntrega = "SELECT * FROM Produto_Entrega AS proEnt LEFT JOIN Produto AS p ON p.idproduto = proEnt.produto_id WHERE entrega_id = ?";
+                PreparedStatement psProEnt = conn.prepareStatement(sqlProdutosEntrega);
+                psProEnt.setInt(1, idEntrega);
+                ResultSet rsProEnt = psProEnt.executeQuery();
 
-                    //Settando o ID Produto e os atributos da classe Produto_Entrega
-                    p.setIdProduto(idProduto);
-                    proEnt.setProduto(p);
-                    proEnt.setQuantidade(quantidade);
+                while(rsProEnt.next()){
+                    int idProduto = rsProEnt.getInt("produto_ID");
+                    String nomeProduto = rsProEnt.getString("nome");
+                    int quantidade = rsProEnt.getInt("quantidade");
 
-                    //Adicionando Produto na Entrega
-                    entregaAtual.getProdutos().add(proEnt);
+                    if (idProduto != 0){
+                        ProdutoEntrega proEnt = new ProdutoEntrega();
+                        Produto p = new Produto();
+
+                        //Settando o ID Produto e os atributos da classe Produto_Entrega
+                        p.setNome(nomeProduto);
+                        p.setIdProduto(idProduto);
+                        proEnt.setProduto(p);
+                        proEnt.setQuantidade(quantidade);
+
+                        //Adicionando Produto na Entrega
+                        entregaAtual.getProdutos().add(proEnt);
+                    }
                 }
             }
-        } catch (Exception e){
-            throw new RuntimeException();
+        } catch (SQLException e){
+            throw new RuntimeException(e);
         }
+
         System.out.println(entregas);
         return entregas;
     }
+
+    public void alterarStatusEntrega (boolean realizada, int idEntrega){
+        String sql = "UPDATE entrega SET realizada = ? WHERE identrega = ?";
+
+        try(Connection cnn = connection.getConnection()) {
+            PreparedStatement ps = cnn.prepareStatement(sql);
+
+            ps.setBoolean(1, realizada);
+            ps.setInt(2, idEntrega);
+
+            ps.execute();
+
+            System.out.println("Status da Entrega Alterado");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -72,4 +72,20 @@ public class ClienteDAO {
         System.out.println(clientes);
         return clientes;
     }
+
+    public void apagarCliente(Integer idCliente){
+        String sql = "DELETE FROM Cliente WHERE idCliente = ?";
+
+        try(Connection cnn = connection.getConnection()){
+            PreparedStatement ps = cnn.prepareStatement(sql);
+
+            ps.setInt(1, idCliente);
+
+            ps.execute();
+
+            System.out.println("Cliente Deletado com Sucesso!");
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 }

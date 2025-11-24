@@ -79,8 +79,8 @@ public class Cliente {
     public String toString() {
         return  "\nCliente{" +
                 " Nome='" + nome + '\'' +
-                " cpf/Cnpj='" + cpfCnpj + '\'' +
-                " razaoSocial='" + razaoSocial + '\'' + "}";
+                ", cpf/Cnpj='" + cpfCnpj + '\'' +
+                ", razaoSocial='" + razaoSocial + '\'' + "}";
     }
 }
 
