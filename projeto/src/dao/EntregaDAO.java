@@ -14,8 +14,8 @@ public class EntregaDAO {
         this.connection = new ConnectionFactory();
     }
 
-    public void cadastrarEntrega(Entrega entrega, ProdutoEntrega produtoEntrega) {
-        String sql = "INSERT INTO Entrega (realizado, clienteRemetente_ID, clienteDestinatario_ID) VALUES (?, ?, ?)";
+    public void cadastrarEntrega(Entrega entrega, ArrayList<ProdutoEntrega> mercadorias) {
+        String sql = "INSERT INTO Entrega (realizada, clienteRemetente_ID, clienteDestinatario_ID) VALUES (?, ?, ?)";
 
         try (Connection conn = connection.getConnection()){
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -42,13 +42,16 @@ public class EntregaDAO {
             String sqlProdutoEntrega = "INSERT INTO Produto_Entrega (entrega_ID, produto_ID, quantidade) VALUES (?, ?, ?)";
             PreparedStatement psProdutoEntrega = conn.prepareStatement(sqlProdutoEntrega);
 
-            psProdutoEntrega.setInt(1, idEntrega);
-            psProdutoEntrega.setInt(2, produtoEntrega.getProduto().getIdProduto());
-            psProdutoEntrega.setInt(3, produtoEntrega.getQuantidade());
+            //Laço de repetição para adicionar Produtos da lista
+            for(ProdutoEntrega p : mercadorias) {
+                psProdutoEntrega.setInt(1, idEntrega);
+                psProdutoEntrega.setInt(2, p.getProduto().getIdProduto());
+                psProdutoEntrega.setInt(3, p.getQuantidade());
 
-            psProdutoEntrega.executeUpdate();
+                psProdutoEntrega.executeUpdate();
+            }
 
-            System.out.println("Produto cadastrado em Entrega!");
+            System.out.println("Mercadoria cadastrada em Entrega!");
 
         } catch (SQLException e){
             throw new RuntimeException(e);
@@ -58,7 +61,7 @@ public class EntregaDAO {
     public ArrayList<Entrega> listarEntregas(){
         String sql = "\tSELECT \n" +
                 "    e.idEntrega,\n" +
-                "    e.realizado,\n" +
+                "    e.realizada,\n" +
                 "    e.clienteRemetente_ID,\n" +
                 "    e.clienteDestinatario_ID,\n" +
                 "\n" +
@@ -81,7 +84,7 @@ public class EntregaDAO {
             while (rs.next()){
                 //Tabela Entrega
                 int idEntrega = rs.getInt("identrega");
-                boolean realizada = rs.getBoolean("realizado");
+                boolean realizada = rs.getBoolean("realizada");
                 int remetente_id = rs.getInt("clienteRemetente_ID");
                 int destinatario_id = rs.getInt("clienteDestinatario_ID");
 

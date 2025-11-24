@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Entrega {
 
@@ -11,7 +10,7 @@ public class Entrega {
     public Cliente clienteDestinatario;
 
     // Declarando a lista de produtos para o Produto_Entrega
-    private List<ProdutoEntrega> produtos;
+    private ArrayList<ProdutoEntrega> produtos;
 
     public Entrega(boolean realizada, Cliente clienteRemetente, Cliente clienteDestinatario) {
         this.realizada = realizada;
@@ -54,11 +53,11 @@ public class Entrega {
         this.clienteDestinatario = clienteDestinatario;
     }
 
-    public List<ProdutoEntrega> getProdutos() {
+    public ArrayList<ProdutoEntrega> getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(List<ProdutoEntrega> produtos) {
+    public void setProdutos(ArrayList<ProdutoEntrega> produtos) {
         this.produtos = produtos;
     }
 
@@ -66,7 +65,7 @@ public class Entrega {
         String listaProdutos = "" ;
 
         for (ProdutoEntrega proEnt : produtos) {
-             listaProdutos = "\n Produto ID: " + proEnt.getProduto().getIdProduto() +
+             listaProdutos += "\n Produto ID: " + proEnt.getProduto().getIdProduto() +
                               " Quantidade: " + proEnt.getQuantidade();
         }
 
@@ -75,8 +74,6 @@ public class Entrega {
                " Realizada: " + isRealizada() +
                " ID do Cliente Remetente: " + clienteRemetente.getIdCliente() +
                " ID do Cliente Destinatario: " + clienteDestinatario.getIdCliente() +
-               " \nProdutos: " + listaProdutos + "}";
-
-
+               " \nProdutos: " + listaProdutos + "}\n";
     }
 }
