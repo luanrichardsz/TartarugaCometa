@@ -34,7 +34,7 @@ public class ClienteDAO {
 
             //Pegar o ID da Entrega que foi criada
             int idCliente = -1;
-            try (java.sql.ResultSet rs = ps.getGeneratedKeys()){
+            try (ResultSet rs = ps.getGeneratedKeys()){
                 if (rs.next()){
                     idCliente = rs.getInt(1);
                     cliente.setIdCliente(idCliente);
@@ -47,7 +47,6 @@ public class ClienteDAO {
             throw new RuntimeException(e);
         }
     }
-
 
     public ArrayList<Cliente> listarClientes(){
         String sql = "SELECT nome, cpf_Cnpj, razaoSocial, endereco_id from Cliente";
@@ -74,10 +73,52 @@ public class ClienteDAO {
     }
 
     public void apagarCliente(Integer idCliente){
-        String sql = "DELETE FROM Cliente WHERE idCliente = ?";
+        String sqlEntrega  = "DELETE FROM Entrega WHERE clienteremetente_id = ? OR clientedestinatario_id = ?";
+        String sqlEndereco = "SELECT endereco_id FROM Cliente WHERE idcliente = ?";
+        String sqlDeleteEndereco = "DELETE FROM Endereco WHERE idendereco = ?;";
+        String sqlDeleteCliente   = "DELETE FROM Cliente WHERE idCliente = ?";
 
+        //Deletando a Entrega
         try(Connection cnn = connection.getConnection()){
-            PreparedStatement ps = cnn.prepareStatement(sql);
+            PreparedStatement psEntrega = cnn.prepareStatement(sqlEntrega);
+            psEntrega.setInt(1, idCliente);
+            psEntrega.setInt(2, idCliente);
+
+            psEntrega.execute();
+
+            System.out.println("Apagando Entregas Referente ao Cliente");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        };
+
+        //Buscando e Deletando o ID Endereco
+        try(Connection cnn = connection.getConnection()){
+            PreparedStatement psEndereco = cnn.prepareStatement(sqlEndereco);
+
+            psEndereco.setInt(1, idCliente);
+
+            ResultSet rsEndereco = psEndereco.executeQuery();
+
+            int idEntrega;
+
+            PreparedStatement psDeleteEndereco = null;
+
+            while (rsEndereco.next()){
+                idEntrega = rsEndereco.getInt("endereco_id");
+                psDeleteEndereco = cnn.prepareStatement(sqlDeleteEndereco);
+                psDeleteEndereco.setInt(1, idEntrega);
+            }
+
+            System.out.println("Apagando Endereço Referente ao Cliente");
+            psDeleteEndereco.execute();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        // Deletando o Cliente
+        try(Connection cnn = connection.getConnection()){
+            PreparedStatement ps = cnn.prepareStatement(sqlDeleteCliente);
 
             ps.setInt(1, idCliente);
 
@@ -86,6 +127,6 @@ public class ClienteDAO {
             System.out.println("Cliente Deletado com Sucesso!");
         } catch (SQLException e){
             throw new RuntimeException(e);
-        }
+        };
     }
 }

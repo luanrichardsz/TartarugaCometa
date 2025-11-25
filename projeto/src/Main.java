@@ -11,9 +11,9 @@ public class Main {
         ProdutoDAO daoProduto = new ProdutoDAO();
         EntregaDAO daoEntrega = new EntregaDAO();
 
-// --------------------------------------------------------------------------------------------------------------------------------
+//// --------------------------------------------------------------------------------------------------------------------------------
 
-        // Cadastrando a Primeira Entrega
+        //// Cadastrando a Primeira Entrega
 
 //        Endereco endereco01 = new Endereco("Pedra Grande", "84-B", "Jardim Maravilha", "Petrolina", "PE");
 //        daoEndereco.cadastrarEndereco(endereco01);
@@ -36,18 +36,18 @@ public class Main {
 //        ProdutoEntrega produtoFeijao = new ProdutoEntrega(produto01, 4);
 //        ProdutoEntrega produtoArroz = new ProdutoEntrega(produto02, 2);
 //
-//        ArrayList<ProdutoEntrega> mercadoriaEntrega01 = new ArrayList<>();
+//        ArrayList<ProdutoEntrega> mercadoriasEntrega01 = new ArrayList<>();
 //
-//        mercadoriaEntrega01.add(produtoFeijao);
-//        mercadoriaEntrega01.add(produtoArroz);
+//        mercadoriasEntrega01.add(produtoFeijao);
+//        mercadoriasEntrega01.add(produtoArroz);
 //
 //        Entrega entrega01 = new Entrega(false, clienteD01, clienteR01);
 //
 //        daoEntrega.cadastrarEntrega(entrega01, mercadoriaEntrega01);
 
-// --------------------------------------------------------------------------------------------------------------------------------
+//// --------------------------------------------------------------------------------------------------------------------------------
 
-        // Cadastrando a Segunda Entrega
+        //// Cadastrando a Segunda Entrega
 
 //        Endereco endereco03 = new Endereco("Av. Paulista", "1578", "Bela Vista", "São Paulo", "SP");
 //        daoEndereco.cadastrarEndereco(endereco03);
@@ -77,8 +77,8 @@ public class Main {
 //        Entrega entrega02 = new Entrega(true, clienteR02, clienteD02);
 //        daoEntrega.cadastrarEntrega(entrega02, mercadoriasEntrega02);
 
-// --------------------------------------------------------------------------------------------------------------------------------
-        // Cadastrando a Terceira Entrega (1 Entrega)
+//// --------------------------------------------------------------------------------------------------------------------------------
+////         Cadastrando a Terceira Entrega (1 Entrega)
 
 //        Endereco endereco05 = new Endereco("Rua Plantão", "87-C", "Deputado José Antônio Liberato", "Caruaru", "PE");
 //        daoEndereco.cadastrarEndereco(endereco05);
@@ -104,27 +104,23 @@ public class Main {
 //        daoEntrega.cadastrarEntrega(entrega03, mercadoriasEntrega03);
 
 // --------------------------------------------------------------------------------------------------------------------------------
-//        Endereco enderecoTeste = new Endereco("La na rua", "84", "Varzea", "Recife", "PE");
-//        daoEndereco.cadastrarEndereco(enderecoTeste);
-//
-//        Cliente clienteTeste = new Cliente("Luan Richard", "84574154151", null, enderecoTeste);
-//        daoCliente.cadastrarCliente(clienteTeste);
-
         // Funções
+
 
 //        daoEndereco.listarEnderecos();
 //        daoCliente.listarClientes();
-//        daoCliente.apagarCliente(7);
-//
-//        System.out.println("========================= DEPOIS DO DELETE DO CLIENTE TESTE ==========================");
+//        daoCliente.apagarCliente(2);
+
+//        System.out.println("========================= DEPOIS DO DELETE DO CLIENTE ==========================");
+//        daoEndereco.listarEnderecos();
 //        daoCliente.listarClientes();
 
 //        daoProduto.listarProdutos();
-        daoEntrega.listarEntregas();
-        daoEntrega.alterarStatusEntrega(true, 1);
+//        daoEntrega.listarEntregas();
 
-        System.out.println("========================= DEPOIS DA MUDANÇA NO ID ENTREGA 1 ==========================");
-        daoEntrega.listarEntregas();
+//        daoEntrega.alterarStatusEntrega(true, 1);
+//        System.out.println("========================= DEPOIS DA MUDANÇA NO ID ENTREGA 1 ==========================");
+//        daoEntrega.listarEntregas();
 
     }
 }
