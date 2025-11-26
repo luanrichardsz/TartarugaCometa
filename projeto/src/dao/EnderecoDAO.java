@@ -14,7 +14,7 @@ public class EnderecoDAO {
         this.connection = new ConnectionFactory();
     }
 
-    public void cadastrarEndereco(Endereco endereco){
+    public void cadastrar(Endereco endereco){
         String sql = "INSERT INTO endereco (cidade, rua, numero, bairro, estado) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = connection.getConnection()) {

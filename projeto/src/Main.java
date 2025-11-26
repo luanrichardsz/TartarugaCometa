@@ -1,32 +1,30 @@
 import model.*;
-import dao.*;
-
-import java.util.ArrayList;
+import controller.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        EnderecoDAO daoEndereco = new EnderecoDAO();
-        ClienteDAO daoCliente = new ClienteDAO();
-        ProdutoDAO daoProduto = new ProdutoDAO();
-        EntregaDAO daoEntrega = new EntregaDAO();
+        EnderecoController endereco = new EnderecoController();
+        ClienteController  cliente  = new ClienteController();
+        EntregaController  entrega   = new EntregaController();
+        ProdutoController  produto   = new ProdutoController();
 
 //// --------------------------------------------------------------------------------------------------------------------------------
 
         //// Cadastrando a Primeira Entrega
 
-//        Endereco endereco01 = new Endereco("Pedra Grande", "84-B", "Jardim Maravilha", "Petrolina", "PE");
-//        daoEndereco.cadastrarEndereco(endereco01);
+        endereco.cadastrarEndereco();
+        endereco.listarEnderecos();
+
+        cliente.cadastrarCliente();
+        cliente.listarClientes();
+        cliente.deletarCliente();
+
+        entrega.cadastrarEntrega();
+//        entrega.listarEntregas();
+
 //
-//        Endereco endereco02 = new Endereco("1ª Travessa Padre Nóbrega", "201-A", "Cavaleiro", "Jaboatão dos Guararapes", "PE");
-//        daoEndereco.cadastrarEndereco(endereco02);
-//
-//        Cliente clienteR01 = new Cliente("Miguel Levi", "73989153000187", "Miguel e Levi Transportes ME", endereco02);
-//        daoCliente.cadastrarCliente(clienteR01);
-//
-//        Cliente clienteD01 = new Cliente("Alícia Raquel Aline Vieira", "22131982178", null, endereco01);
-//        daoCliente.cadastrarCliente(clienteD01);
-//
+
 //        Produto produto01 = new Produto("Feijão", 2000.00, 2.67, 8000.00);
 //        daoProduto.cadastrarProduto(produto01);
 //
@@ -36,14 +34,7 @@ public class Main {
 //        ProdutoEntrega produtoFeijao = new ProdutoEntrega(produto01, 4);
 //        ProdutoEntrega produtoArroz = new ProdutoEntrega(produto02, 2);
 //
-//        ArrayList<ProdutoEntrega> mercadoriasEntrega01 = new ArrayList<>();
-//
-//        mercadoriasEntrega01.add(produtoFeijao);
-//        mercadoriasEntrega01.add(produtoArroz);
-//
-//        Entrega entrega01 = new Entrega(false, clienteD01, clienteR01);
-//
-//        daoEntrega.cadastrarEntrega(entrega01, mercadoriaEntrega01);
+
 
 //// --------------------------------------------------------------------------------------------------------------------------------
 
@@ -109,7 +100,6 @@ public class Main {
 
 //        daoEndereco.listarEnderecos();
 //        daoCliente.listarClientes();
-//        daoCliente.apagarCliente(2);
 
 //        System.out.println("========================= DEPOIS DO DELETE DO CLIENTE ==========================");
 //        daoEndereco.listarEnderecos();

@@ -16,7 +16,7 @@ public class ClienteDAO {
         this.connection = new ConnectionFactory();
     }
 
-    public void cadastrarCliente(Cliente cliente){
+    public void cadastrar(Cliente cliente){
         String sql = "INSERT INTO cliente (nome, cpf_cnpj, razaoSocial, isFisico, Endereco_ID) VALUES (?, ?, ?, ?, ?)";
 
         try(Connection conn = connection.getConnection()){
@@ -48,7 +48,7 @@ public class ClienteDAO {
         }
     }
 
-    public ArrayList<Cliente> listarClientes(){
+    public ArrayList<Cliente> listar(){
         String sql = "SELECT nome, cpf_Cnpj, razaoSocial, endereco_id from Cliente";
 
         ArrayList<Cliente> clientes = new ArrayList<>();
@@ -72,7 +72,7 @@ public class ClienteDAO {
         return clientes;
     }
 
-    public void apagarCliente(Integer idCliente){
+    public void apagar(Integer idCliente){
         String sqlEntrega  = "DELETE FROM Entrega WHERE clienteremetente_id = ? OR clientedestinatario_id = ?";
         String sqlEndereco = "SELECT endereco_id FROM Cliente WHERE idcliente = ?";
         String sqlDeleteEndereco = "DELETE FROM Endereco WHERE idendereco = ?;";

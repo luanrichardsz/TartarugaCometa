@@ -14,7 +14,7 @@ public class ProdutoDAO {
         this.connection = new ConnectionFactory();
     }
 
-    public void cadastrarProduto(Produto produto){
+    public void cadastrar(Produto produto){
         String sql = "INSERT INTO Produto (nome, peso, volume, valor) VALUES (?, ?, ?,?)";
 
         try (Connection conn = connection.getConnection()){
@@ -45,7 +45,7 @@ public class ProdutoDAO {
         }
     }
 
-    public ArrayList<Produto> listarProdutos(){
+    public ArrayList<Produto> listar(){
         String sql = "SELECT * FROM Produto";
 
         ArrayList<Produto> produtos = new ArrayList<>();
