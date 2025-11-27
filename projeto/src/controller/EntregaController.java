@@ -7,20 +7,16 @@ import dao.EntregaDAO;
 import java.util.ArrayList;
 
 public class EntregaController {
-    EntregaDAO entrega = new EntregaDAO();
+    EntregaDAO daoEntrega = new EntregaDAO();
 
-    public void cadastrarEntrega(){
-        ArrayList<ProdutoEntrega> mercadoriasEntrega01 = new ArrayList<>();
+    public Entrega cadastrarEntrega(Entrega entrega, ArrayList<ProdutoEntrega> mercadoria){
 
-//        mercadoriasEntrega01.add(produtoFeijao); //arrumar
-//        mercadoriasEntrega01.add(produtoArroz); // arrumar
+        daoEntrega.cadastrar(entrega, mercadoria);
 
-//        Entrega entrega01 = new Entrega(false, clienteD01, clienteR01); //arrumar
-
-//        entrega.cadastrar(entrega01, mercadoriasEntrega01);
+        return entrega;
     }
 
-    public ArrayList<Entrega> listarEntrega(){
-        return entrega.listar();
+    public ArrayList<Entrega> listarEntregas(){
+        return daoEntrega.listar();
     }
 }

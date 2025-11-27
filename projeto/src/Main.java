@@ -1,6 +1,8 @@
 import model.*;
 import controller.*;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -13,50 +15,37 @@ public class Main {
 
         //// Cadastrando a Primeira Entrega
 
-        endereco.cadastrarEndereco();
-        endereco.listarEnderecos();
-
-        cliente.cadastrarCliente();
-        cliente.listarClientes();
-        cliente.deletarCliente();
-
-        entrega.cadastrarEntrega();
-//        entrega.listarEntregas();
-
+//        Endereco endereco01 = endereco.cadastrarEndereco(new Endereco("1ª Travessa Padre Nóbrega", "201-A", "Cavaleiro", "Jaboatão dos Guararapes", "PE"));
+//        Endereco endereco02 = endereco.cadastrarEndereco(new Endereco("Pedra Grande", "84-B", "Jardim Maravilha", "Petrolina", "PE"));
 //
-
-//        Produto produto01 = new Produto("Feijão", 2000.00, 2.67, 8000.00);
-//        daoProduto.cadastrarProduto(produto01);
+//        Cliente clienteR01 = cliente.cadastrarCliente(new Cliente("Miguel Levi", "73989153000187", "Miguel e Levi Transportes ME", endereco02));
+//        Cliente clienteD01 = cliente.cadastrarCliente(new Cliente("Alícia Raquel Aline Vieira", "22131982178", null, endereco01));
 //
-//        Produto produto02 = new Produto("Arroz", 2000.00, 2.10, 6800.00);
-//        daoProduto.cadastrarProduto(produto02);
+//        Produto produto01 = produto.cadastrarProduto(new Produto("Feijão", 2000.00, 2.67, 8000.00));
+//        Produto produto02 = produto.cadastrarProduto(new Produto("Arroz", 2000.00, 2.10, 6800.00));
+//
+//        ArrayList<ProdutoEntrega> mercadoriasEntrega01 = new ArrayList<>();
 //
 //        ProdutoEntrega produtoFeijao = new ProdutoEntrega(produto01, 4);
 //        ProdutoEntrega produtoArroz = new ProdutoEntrega(produto02, 2);
 //
-
+//        mercadoriasEntrega01.add(produtoFeijao);
+//        mercadoriasEntrega01.add(produtoArroz);
+//
+//        Entrega entrega01 = entrega.cadastrarEntrega(new Entrega(false, clienteD01, clienteR01), mercadoriasEntrega01);
 
 //// --------------------------------------------------------------------------------------------------------------------------------
 
         //// Cadastrando a Segunda Entrega
 
-//        Endereco endereco03 = new Endereco("Av. Paulista", "1578", "Bela Vista", "São Paulo", "SP");
-//        daoEndereco.cadastrarEndereco(endereco03);
+//        Endereco endereco03 =  endereco.cadastrarEndereco(new Endereco("Av. Paulista", "1578", "Bela Vista", "São Paulo", "SP"));
+//        Endereco endereco04 =  endereco.cadastrarEndereco(new Endereco("Rua Harmonia", "350", "Vila Madalena", "São Paulo", "SP"));
 //
-//        Endereco endereco04 = new Endereco("Rua Harmonia", "350", "Vila Madalena", "São Paulo", "SP");
-//        daoEndereco.cadastrarEndereco(endereco04);
+//        Cliente clienteR02 = cliente.cadastrarCliente(new Cliente("Tech Solutions Ltda", "12345678000199", "TechPoint", endereco03));
+//        Cliente clienteD02 = cliente.cadastrarCliente(new Cliente("Souza Advogados Associados", "98765432000188", "Souza Adv", endereco04));
 //
-//        Cliente clienteR02 = new Cliente("Tech Solutions Ltda", "12345678000199", "TechPoint", endereco03);
-//        daoCliente.cadastrarCliente(clienteR02);
-//
-//        Cliente clienteD02 = new Cliente("Souza Advogados Associados", "98765432000188", "Souza Adv", endereco04);
-//        daoCliente.cadastrarCliente(clienteD02);
-//
-//        Produto produto03 = new Produto("Notebook Dell Inspiron", 3500.00, 1.42, 5000.00);
-//        daoProduto.cadastrarProduto(produto03);
-//
-//        Produto produto04 = new Produto("Mouse Logitec Sem Fio", 80.00, 1.87, 150.00);
-//        daoProduto.cadastrarProduto(produto04);
+//        Produto produto03 = produto.cadastrarProduto(new Produto("Notebook Dell Inspiron", 3500.00, 1.42, 5000.00));
+//        Produto produto04 =  produto.cadastrarProduto(new Produto("Mouse Logitec Sem Fio", 80.00, 1.87, 150.00));
 //
 //        ProdutoEntrega itemNotebook = new ProdutoEntrega(produto03, 2);
 //        ProdutoEntrega itemMouse = new ProdutoEntrega(produto04, 5);
@@ -65,52 +54,34 @@ public class Main {
 //        mercadoriasEntrega02.add(itemNotebook);
 //        mercadoriasEntrega02.add(itemMouse);
 //
-//        Entrega entrega02 = new Entrega(true, clienteR02, clienteD02);
-//        daoEntrega.cadastrarEntrega(entrega02, mercadoriasEntrega02);
+//        Entrega entrega02 = entrega.cadastrarEntrega(new Entrega(true, clienteR02, clienteD02), mercadoriasEntrega02);
 
 //// --------------------------------------------------------------------------------------------------------------------------------
-////         Cadastrando a Terceira Entrega (1 Entrega)
-
-//        Endereco endereco05 = new Endereco("Rua Plantão", "87-C", "Deputado José Antônio Liberato", "Caruaru", "PE");
-//        daoEndereco.cadastrarEndereco(endereco05);
+////         Cadastrando a Terceira Entrega (1 Produto)
 //
-//        Endereco endereco06 = new Endereco("Rua João Ivo da Silva", "841", "Madalena", "Recife", "PE");
-//        daoEndereco.cadastrarEndereco(endereco06);
+//        Endereco endereco05 = endereco.cadastrarEndereco(new Endereco("Rua Plantão", "87-C", "Deputado José Antônio Liberato", "Caruaru", "PE"));
+//        Endereco endereco06 = endereco.cadastrarEndereco(new Endereco("Rua João Ivo da Silva", "841", "Madalena", "Recife", "PE"));
 //
-//        Cliente clienteR03 = new Cliente("Pietra e Maitê Doces & Salgados Ltda", "90192059000111", "Maipie Doces e Salgados", endereco05);
-//        daoCliente.cadastrarCliente(clienteR03);
+//        Cliente clienteR03 = cliente.cadastrarCliente(new Cliente("Pietra e Maitê Doces & Salgados Ltda", "90192059000111", "Maipie Doces e Salgados", endereco05));
+//        Cliente clienteD03 = cliente.cadastrarCliente(new Cliente("Rebeca Laura Souza", "30007624425", null, endereco06));
 //
-//        Cliente clienteD03 = new Cliente("Rebeca Laura Souza", "30007624425", null, endereco06);
-//        daoCliente.cadastrarCliente(clienteD03);
-//
-//        Produto produto05 = new Produto("Pão Doce de Coco", 3.50 , 1.00, 10.00);
-//        daoProduto.cadastrarProduto(produto05);
+//        Produto produto05 = produto.cadastrarProduto(new Produto("Pão Doce de Coco", 3.50 , 1.00, 10.00));
 //
 //        ProdutoEntrega itemPaoDoce = new ProdutoEntrega(produto05, 5);
 //
 //        ArrayList<ProdutoEntrega> mercadoriasEntrega03 = new ArrayList<>();
 //        mercadoriasEntrega03.add(itemPaoDoce);
 //
-//        Entrega entrega03 = new Entrega(true, clienteR03, clienteD03);
-//        daoEntrega.cadastrarEntrega(entrega03, mercadoriasEntrega03);
+//        Entrega entrega03 = entrega.cadastrarEntrega(new Entrega(true, clienteR03, clienteD03), mercadoriasEntrega03);
 
 // --------------------------------------------------------------------------------------------------------------------------------
         // Funções
 
-
-//        daoEndereco.listarEnderecos();
-//        daoCliente.listarClientes();
-
-//        System.out.println("========================= DEPOIS DO DELETE DO CLIENTE ==========================");
-//        daoEndereco.listarEnderecos();
-//        daoCliente.listarClientes();
-
-//        daoProduto.listarProdutos();
-//        daoEntrega.listarEntregas();
-
-//        daoEntrega.alterarStatusEntrega(true, 1);
-//        System.out.println("========================= DEPOIS DA MUDANÇA NO ID ENTREGA 1 ==========================");
-//        daoEntrega.listarEntregas();
+        endereco.listarEnderecos();
+        cliente.listarClientes();
+//        cliente.deletarCliente(2);
+        produto.listarProdutos();
+        entrega.listarEntregas();
 
     }
 }
