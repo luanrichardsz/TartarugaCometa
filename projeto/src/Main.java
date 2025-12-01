@@ -82,6 +82,7 @@ public class Main {
 //        cliente.deletarCliente(2);
         produto.listarProdutos();
         entrega.listarEntregas();
+//        entrega.atualizarStatusEntrega(false, 1);
 
     }
 }

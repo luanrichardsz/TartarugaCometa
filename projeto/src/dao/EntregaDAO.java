@@ -132,7 +132,7 @@ public class EntregaDAO {
         return entregas;
     }
 
-    public void alterarStatusEntrega (boolean realizada, int idEntrega){
+    public void atualizar (boolean realizada, int idEntrega){
         String sql = "UPDATE entrega SET realizada = ? WHERE identrega = ?";
 
         try(Connection cnn = connection.getConnection()) {

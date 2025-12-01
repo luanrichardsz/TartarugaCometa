@@ -19,4 +19,8 @@ public class EntregaController {
     public ArrayList<Entrega> listarEntregas(){
         return daoEntrega.listar();
     }
+
+    public void atualizarStatusEntrega(boolean realizada, int idEntrega) {
+        daoEntrega.atualizar(realizada, idEntrega);
+    }
 }
