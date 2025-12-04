@@ -74,7 +74,7 @@ public class ClienteDAO {
 
     public void apagar(Integer idCliente){
         String sqlEntrega  = "DELETE FROM Entrega WHERE clienteremetente_id = ? OR clientedestinatario_id = ?";
-        String sqlEndereco = "SELECT endereco_id FROM Cliente WHERE idcliente = ?";
+        String sqlEndereco = "SELECT Endereco_ID FROM Cliente WHERE idCliente = ?";
         String sqlDeleteEndereco = "DELETE FROM Endereco WHERE idendereco = ?;";
         String sqlDeleteCliente   = "DELETE FROM Cliente WHERE idCliente = ?";
 
@@ -93,40 +93,33 @@ public class ClienteDAO {
 
         //Buscando e Deletando o ID Endereco
         try(Connection cnn = connection.getConnection()){
+            //Executando a SQL de Busca de Endereco_ID no Cliente
             PreparedStatement psEndereco = cnn.prepareStatement(sqlEndereco);
-
             psEndereco.setInt(1, idCliente);
-
             ResultSet rsEndereco = psEndereco.executeQuery();
 
-            int idEntrega;
-
-            PreparedStatement psDeleteEndereco = null;
-
-            while (rsEndereco.next()){
-                idEntrega = rsEndereco.getInt("endereco_id");
-                psDeleteEndereco = cnn.prepareStatement(sqlDeleteEndereco);
-                psDeleteEndereco.setInt(1, idEntrega);
+            int idEndereco = 0;
+            //Armazenando na variavel idEndereco
+            while (rsEndereco.next()) {
+                idEndereco = rsEndereco.getInt("Endereco_ID");
             }
 
-            System.out.println("Apagando Endereço Referente ao Cliente");
-            psDeleteEndereco.execute();
+            //Deletando o cliente com o Endereco_ID ja armazenado em outra variavel
+            PreparedStatement ps = cnn.prepareStatement(sqlDeleteCliente);
+            ps.setInt(1, idCliente);
+            ps.execute();
+            System.out.println("Cliente Deletado com Sucesso!");
+
+            // Deletendo o Endereco quando for diferente de 0
+            if (idEndereco != 0) {
+                PreparedStatement psDeleteEndereco = cnn.prepareStatement(sqlDeleteEndereco);
+                psDeleteEndereco.setInt(1, idEndereco);
+                psDeleteEndereco.execute();
+                System.out.println("Endereço Deletado com Sucesso!");
+            }
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        // Deletando o Cliente
-        try(Connection cnn = connection.getConnection()){
-            PreparedStatement ps = cnn.prepareStatement(sqlDeleteCliente);
-
-            ps.setInt(1, idCliente);
-
-            ps.execute();
-
-            System.out.println("Cliente Deletado com Sucesso!");
-        } catch (SQLException e){
-            throw new RuntimeException(e);
-        };
     }
 }

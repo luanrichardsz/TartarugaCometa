@@ -70,4 +70,26 @@ public class ProdutoDAO {
         return produtos;
     }
 
+    public void atualizar(String nome, double peso, double volume, double valor, int idProduto){
+        String sql = "UPDATE Produto SET nome = ?, peso = ?, volume = ?, valor = ? WHERE idproduto = ?";
+
+        try(Connection cnn = connection.getConnection()){
+            PreparedStatement ps = cnn.prepareStatement(sql);
+
+            ps.setString(1, nome);
+            ps.setDouble(2, peso);
+            ps.setDouble(3, volume);
+            ps.setDouble(4, valor);
+
+            ps.setInt(5, idProduto);
+
+            ps.execute();
+
+            System.out.println("Produto com o ID: " + idProduto + " atualizado");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

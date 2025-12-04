@@ -13,7 +13,7 @@ public class Main {
 
 //// --------------------------------------------------------------------------------------------------------------------------------
 
-        //// Cadastrando a Primeira Entrega
+        // Cadastrando a Primeira Entrega
 
 //        Endereco endereco01 = endereco.cadastrarEndereco(new Endereco("1ª Travessa Padre Nóbrega", "201-A", "Cavaleiro", "Jaboatão dos Guararapes", "PE"));
 //        Endereco endereco02 = endereco.cadastrarEndereco(new Endereco("Pedra Grande", "84-B", "Jardim Maravilha", "Petrolina", "PE"));
@@ -33,11 +33,11 @@ public class Main {
 //        mercadoriasEntrega01.add(produtoArroz);
 //
 //        Entrega entrega01 = entrega.cadastrarEntrega(new Entrega(false, clienteD01, clienteR01), mercadoriasEntrega01);
-
+//
 //// --------------------------------------------------------------------------------------------------------------------------------
-
-        //// Cadastrando a Segunda Entrega
-
+//
+//        // Cadastrando a Segunda Entrega
+//
 //        Endereco endereco03 =  endereco.cadastrarEndereco(new Endereco("Av. Paulista", "1578", "Bela Vista", "São Paulo", "SP"));
 //        Endereco endereco04 =  endereco.cadastrarEndereco(new Endereco("Rua Harmonia", "350", "Vila Madalena", "São Paulo", "SP"));
 //
@@ -55,7 +55,7 @@ public class Main {
 //        mercadoriasEntrega02.add(itemMouse);
 //
 //        Entrega entrega02 = entrega.cadastrarEntrega(new Entrega(true, clienteR02, clienteD02), mercadoriasEntrega02);
-
+//
 //// --------------------------------------------------------------------------------------------------------------------------------
 ////         Cadastrando a Terceira Entrega (1 Produto)
 //
@@ -77,11 +77,16 @@ public class Main {
 // --------------------------------------------------------------------------------------------------------------------------------
         // Funções
 
-        endereco.listarEnderecos();
-        cliente.listarClientes();
-//        cliente.deletarCliente(2);
-        produto.listarProdutos();
-        entrega.listarEntregas();
+//        endereco.listarEnderecos();
+
+//        cliente.listarClientes();
+        cliente.deletarCliente(3);
+
+//        produto.listarProdutos();
+//        produto.atualizarProduto("Feijão", 2000.00, 2.5, 8000.00, 1);
+//        produto.listarProdutos();
+
+//        entrega.listarEntregas();
 //        entrega.atualizarStatusEntrega(false, 1);
 
     }

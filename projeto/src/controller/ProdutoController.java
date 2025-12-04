@@ -2,7 +2,6 @@ package controller;
 
 import dao.ProdutoDAO;
 import model.Produto;
-import model.ProdutoEntrega;
 
 import java.util.ArrayList;
 
@@ -17,5 +16,11 @@ public class ProdutoController {
 
         public ArrayList<Produto> listarProdutos(){
             return daoProduto.listar();
+        }
+
+        public Produto atualizarProduto(String nome, double peso, double volume, double valor, int idProduto){
+            daoProduto.atualizar(nome, peso, volume, valor, idProduto);
+
+            return null;
         }
 }

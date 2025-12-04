@@ -143,7 +143,7 @@ public class EntregaDAO {
 
             ps.execute();
 
-            System.out.println("Status da Entrega Alterado");
+            System.out.println("Status da Entrega com ID: " + idEntrega + " Alterado");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

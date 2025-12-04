@@ -15,6 +15,6 @@ public class EnderecoController {
     }
 
     public ArrayList<Endereco> listarEnderecos(){
-        return daoEndereco.listarEnderecos();
+        return daoEndereco.listar();
     }
 }

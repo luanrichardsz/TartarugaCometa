@@ -43,7 +43,7 @@ public class EnderecoDAO {
         }
     }
 
-    public ArrayList<Endereco> listarEnderecos(){
+    public ArrayList<Endereco> listar(){
         String sql = "SELECT rua, numero, bairro, cidade, estado FROM endereco";
 
         ArrayList<Endereco> enderecos = new ArrayList<>();
@@ -69,5 +69,26 @@ public class EnderecoDAO {
         return enderecos;
     }
 
-    //Editar Endereço
+    public void atualizar(String rua, String numero, String bairro, String cidade, String estado, int idEndereco){
+        String sql = "UPDATE Endereco SET rua = ?, numero = ?, bairro = ?, cidade = ?, estado = ? WHERE idEndereco = ?";
+
+        try (Connection cnn = connection.getConnection()){
+            PreparedStatement ps = cnn.prepareStatement(sql);
+
+            ps.setString(1, rua);
+            ps.setString(2, numero);
+            ps.setString(3, bairro);
+            ps.setString(4, cidade);
+            ps.setString(5, estado);
+
+            ps.setInt(6, idEndereco);
+
+            ps.execute();
+
+            System.out.println("Endereco com o ID: " + idEndereco + " atualizado");
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
