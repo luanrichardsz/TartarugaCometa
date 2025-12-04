@@ -17,4 +17,12 @@ public class EnderecoController {
     public ArrayList<Endereco> listarEnderecos(){
         return daoEndereco.listar();
     }
+
+    public void atualizarEndereco(String rua, String numero, String bairro, String cidade, String estado, int idEndereco){
+        daoEndereco.atualizar(rua, numero, bairro, cidade, estado, idEndereco);
+    }
+
+    public void apagarEndereco(int idEndereco){
+        daoEndereco.apagar(idEndereco);
+    }
 }

@@ -1,6 +1,7 @@
 package dao;
 
 import bd.ConnectionFactory;
+import jdk.nashorn.internal.runtime.regexp.joni.ast.StringNode;
 import model.Endereco;
 
 import java.sql.*;
@@ -88,6 +89,22 @@ public class EnderecoDAO {
             System.out.println("Endereco com o ID: " + idEndereco + " atualizado");
 
         } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void apagar(int idEndereco){
+        String sql = "DELETE FROM Endereco WHERE idEndereco = ?";
+
+        try (Connection cnn = connection.getConnection()){
+            PreparedStatement ps = cnn.prepareStatement(sql);
+
+            ps.setInt(1, idEndereco);
+            ps.execute();
+
+            System.out.println("Endereco apagado");
+
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

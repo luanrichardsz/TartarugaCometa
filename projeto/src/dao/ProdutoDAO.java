@@ -92,4 +92,19 @@ public class ProdutoDAO {
         }
     }
 
+    public void apagar(int idProduto){
+        String sql = "DELETE FROM Produto WHERE idproduto = ?;";
+
+        try (Connection cnn = connection.getConnection()){
+            PreparedStatement ps = cnn.prepareStatement(sql);
+
+            ps.setInt(1, idProduto);
+            ps.execute();
+            System.out.println("Produto Deletado com Sucesso!");
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

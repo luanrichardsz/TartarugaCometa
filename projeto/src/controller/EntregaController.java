@@ -12,7 +12,6 @@ public class EntregaController {
     public Entrega cadastrarEntrega(Entrega entrega, ArrayList<ProdutoEntrega> mercadoria){
 
         daoEntrega.cadastrar(entrega, mercadoria);
-
         return entrega;
     }
 
@@ -22,5 +21,9 @@ public class EntregaController {
 
     public void atualizarStatusEntrega(boolean realizada, int idEntrega) {
         daoEntrega.atualizar(realizada, idEntrega);
+    }
+
+    public void apagarEntrega(int idEntrega){
+        daoEntrega.apagar(idEntrega);
     }
 }

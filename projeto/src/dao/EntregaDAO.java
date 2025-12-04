@@ -150,4 +150,19 @@ public class EntregaDAO {
         }
     }
 
+    public void apagar (int idEntrega){
+        String sql = "DELETE FROM Entrega WHERE identrega = ?";
+
+        try (Connection cnn = connection.getConnection()){
+            PreparedStatement ps = cnn.prepareStatement(sql);
+
+            ps.setInt(1, idEntrega);
+            ps.execute();
+            System.out.println("Entrega Deletada com Sucesso!");
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
