@@ -1,5 +1,6 @@
 package controller;
 
+import bo.EnderecoBO;
 import dao.EnderecoDAO;
 import model.Endereco;
 
@@ -7,10 +8,10 @@ import java.util.ArrayList;
 
 public class EnderecoController {
     EnderecoDAO daoEndereco = new EnderecoDAO();
+    EnderecoBO boEndereco = new EnderecoBO();
 
     public Endereco cadastrarEndereco(Endereco endereco){
-        daoEndereco.cadastrar(endereco);
-
+        boEndereco.validarCriacao(endereco);
         return endereco;
     }
 

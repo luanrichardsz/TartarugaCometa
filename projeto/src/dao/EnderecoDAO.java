@@ -94,10 +94,11 @@ public class EnderecoDAO {
     }
 
     public void apagar(int idEndereco){
-        String sql = "DELETE FROM Endereco WHERE idEndereco = ?";
+        String sqlDeleteEndereco = "DELETE FROM Endereco WHERE idEndereco = ?";
 
+        //Deletando Endereço
         try (Connection cnn = connection.getConnection()){
-            PreparedStatement ps = cnn.prepareStatement(sql);
+            PreparedStatement ps = cnn.prepareStatement(sqlDeleteEndereco);
 
             ps.setInt(1, idEndereco);
             ps.execute();

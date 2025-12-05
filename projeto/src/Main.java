@@ -76,16 +76,19 @@ public class Main {
 
 // --------------------------------------------------------------------------------------------------------------------------------
 ////       TESTE
-//         Endereco enderecoTeste =  endereco.cadastrarEndereco(new Endereco("Av. Paulista", "1578", "Bela Vista", "São Paulo", "SP"));
+
+         Endereco enderecoTeste =  endereco.cadastrarEndereco(new Endereco(null, "55", "Bela Vista", "", "SP"));
 //         Cliente clienteTeste = cliente.cadastrarCliente(new Cliente("Luan Richard", "12345678901", "Ola Amiguinho", enderecoTeste));
+        Produto produto05 = produto.cadastrarProduto(new Produto("", -0 , 0.0, -5.0));
 
 
+// --------------------------------------------------------------------------------------------------------------------------------
 
 //         Funções
 
 //        endereco.listarEnderecos();
 //        endereco.atualizarEndereco("Rua Doelder Camara", "100-B" ,"Madalena", "Recife", "PE", 3);
-//        endereco.apagarEndereco(7); // Entender como burlar a dependencia e apagar somente o endereço
+//        endereco.apagarEndereco(4); // Entender como burlar a dependencia e apagar somente o endereço
 
 //        cliente.listarClientes();
 //        cliente.deletarCliente(7);

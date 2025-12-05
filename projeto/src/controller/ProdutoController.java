@@ -1,5 +1,6 @@
 package controller;
 
+import bo.ProdutoBO;
 import dao.ProdutoDAO;
 import model.Produto;
 
@@ -7,9 +8,11 @@ import java.util.ArrayList;
 
 public class ProdutoController {
     ProdutoDAO daoProduto = new ProdutoDAO();
+    ProdutoBO produtoBO = new ProdutoBO();
 
         public Produto cadastrarProduto(Produto produto){
-            daoProduto.cadastrar(produto);
+            //Chamando a validação para validar e mandar para o banco de dados
+            produtoBO.validarCriacao(produto);
 
             return produto;
         }

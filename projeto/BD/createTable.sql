@@ -18,7 +18,7 @@ CREATE TABLE Cliente (
 	cpf_cnpj VARCHAR(18) NOT NULL UNIQUE,
 	razaoSocial VARCHAR(170) UNIQUE,
 	isFisico BOOLEAN NOT NULL,
-	Endereco_ID INTEGER NOT NULL REFERENCES Endereco(idEndereco) ON CASCADE
+	Endereco_ID INTEGER REFERENCES Endereco(idEndereco) ON DELETE SET NULL
 );
 
 CREATE TABLE Produto (
