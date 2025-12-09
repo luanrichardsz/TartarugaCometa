@@ -77,9 +77,14 @@ public class Main {
 // --------------------------------------------------------------------------------------------------------------------------------
 ////       TESTE
 
-         Endereco enderecoTeste =  endereco.cadastrarEndereco(new Endereco(null, "55", "Bela Vista", "", "SP"));
-//         Cliente clienteTeste = cliente.cadastrarCliente(new Cliente("Luan Richard", "12345678901", "Ola Amiguinho", enderecoTeste));
-        Produto produto05 = produto.cadastrarProduto(new Produto("", -0 , 0.0, -5.0));
+         Endereco enderecoTeste =  endereco.cadastrarEndereco(new Endereco("Sei la o que", "", null, "Garanhuns", "PE"));
+         Cliente clienteTesteR = cliente.cadastrarCliente(new Cliente("pankada", "saddsasad", "dassda", enderecoTeste));
+//         Cliente clienteTesteD = cliente.cadastrarCliente(new Cliente("pankada", "4232", "dadsa", enderecoTeste));
+
+//        Produto produto05 = produto.cadastrarProduto(new Produto("", -0 , 0.0, -5.0));
+        ArrayList<ProdutoEntrega> mercadoriasEntrega = new ArrayList<>();
+//
+//        Entrega entregaTeste = entrega.cadastrarEntrega(new Entrega(false, clienteTesteR, clienteTesteD), mercadoriasEntrega);
 
 
 // --------------------------------------------------------------------------------------------------------------------------------

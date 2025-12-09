@@ -13,38 +13,47 @@ public class EnderecoBO {
 
     //chamar somente as funções onde faz sentido para CRIAÇÃO
     public void validarCriacao(Endereco endereco){
-        validarEntrada(endereco);
+        errosCriacao.clear();
 
+        //Validar as entradas
+        validarEntradaRua(endereco);
+        validarEntradaNumero(endereco);
+        validarEntradaBairro(endereco);
+        validarEntradaCidade(endereco);
+        validarEntradaEstado(endereco);
+
+        //Se a lista de erros estiver vazia, cria o cliente, se nao, imprime os erros
         if (errosCriacao.isEmpty()){
             enderecoDAO.cadastrar(endereco);
+        } else {
+            System.out.println(errosCriacao);
         }
     }
 
     //Função para validar se todas as entradas foram preenchidas
-    public ArrayList<String> validarEntrada(Endereco endereco){
+    public void validarEntradaRua(Endereco endereco){
         if (endereco.getRua() == null || endereco.getRua().isEmpty()){
             errosCriacao.add("\nPreencha o nome da rua!");
         }
+    }
+    private void validarEntradaNumero(Endereco endereco){
         if (endereco.getNumero() == null || endereco.getNumero().isEmpty()){
             errosCriacao.add("\nPreencha o numero da residência!");
         }
+    }
+    private void validarEntradaBairro(Endereco endereco){
         if (endereco.getBairro() == null || endereco.getBairro().isEmpty()){
             errosCriacao.add("\nPreencha o nome do bairro!");
         }
+    }
+    private void validarEntradaCidade(Endereco endereco){
         if (endereco.getCidade() == null || endereco.getCidade().isEmpty()){
             errosCriacao.add("\nPreencha o nome da cidade!");
         }
+    }
+    public void validarEntradaEstado(Endereco endereco){
         if (endereco.getEstado() == null || endereco.getEstado().isEmpty()){
-            errosCriacao.add("\nPreencha o nome da cidade!");
+            errosCriacao.add("\nPreencha o nome do estado!");
         }
-
-        //Se a lista tiver com algum erro, vai imprimir os erros, se nao, nao imprime nada
-        if (!errosCriacao.isEmpty()){
-            System.out.println(errosCriacao);
-
-//            errosCriacao.clear();
-        }
-
-        return errosCriacao;
     }
 }

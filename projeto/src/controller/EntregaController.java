@@ -1,5 +1,6 @@
 package controller;
 
+import bo.EntregaBO;
 import model.Entrega;
 import model.ProdutoEntrega;
 import dao.EntregaDAO;
@@ -8,10 +9,10 @@ import java.util.ArrayList;
 
 public class EntregaController {
     EntregaDAO daoEntrega = new EntregaDAO();
+    EntregaBO boEntrega = new EntregaBO();
 
     public Entrega cadastrarEntrega(Entrega entrega, ArrayList<ProdutoEntrega> mercadoria){
-
-        daoEntrega.cadastrar(entrega, mercadoria);
+        boEntrega.validarCriacao(entrega, mercadoria);
         return entrega;
     }
 
