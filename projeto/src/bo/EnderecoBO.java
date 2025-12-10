@@ -40,20 +40,30 @@ public class EnderecoBO {
         if (endereco.getNumero() == null || endereco.getNumero().isEmpty()){
             errosCriacao.add("\nPreencha o numero da residência!");
         }
+        if (!endereco.getNumero().matches("^\\d{1,5}[A-Z]{0,1}$")){
+            errosCriacao.add("\nPreencha com um número válido!");
+        }
     }
     private void validarEntradaBairro(Endereco endereco){
         if (endereco.getBairro() == null || endereco.getBairro().isEmpty()){
             errosCriacao.add("\nPreencha o nome do bairro!");
         }
+
     }
     private void validarEntradaCidade(Endereco endereco){
         if (endereco.getCidade() == null || endereco.getCidade().isEmpty()){
             errosCriacao.add("\nPreencha o nome da cidade!");
         }
+        if (!endereco.getCidade().matches("^[a-zA-Zà-ü'\\s]{2,}$")){
+            errosCriacao.add("\nCaracteres invalidos no nome da cidade!");
+        }
     }
     public void validarEntradaEstado(Endereco endereco){
         if (endereco.getEstado() == null || endereco.getEstado().isEmpty()){
             errosCriacao.add("\nPreencha o nome do estado!");
+        }
+        if (!endereco.getEstado().matches("^[a-zA-Zà-ü'\\s]{2,}$")){
+            errosCriacao.add("\nCaracteres invalidos no nome do estado!");
         }
     }
 }

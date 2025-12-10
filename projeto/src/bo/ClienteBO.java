@@ -40,7 +40,7 @@ public class ClienteBO {
         if (cliente.getNome() == null || cliente.getNome().isEmpty()) {
             errosCriacao.add("\nPreencha o nome!");
         }
-        if (!cliente.getNome().matches("^[\\w\\sà-ü']{2,}$")){
+        if (!cliente.getNome().matches("^[a-zA-Zà-ü'\\s]{2,}$")){
             errosCriacao.add("\nCaracteres invalidos no nome!");
         }
     }

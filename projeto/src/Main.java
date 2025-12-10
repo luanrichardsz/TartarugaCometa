@@ -77,8 +77,8 @@ public class Main {
 // --------------------------------------------------------------------------------------------------------------------------------
 ////       TESTE
 
-         Endereco enderecoTeste =  endereco.cadastrarEndereco(new Endereco("Sei la o que", "", null, "Garanhuns", "PE"));
-         Cliente clienteTesteR = cliente.cadastrarCliente(new Cliente("pankada", "saddsasad", "dassda", enderecoTeste));
+         Endereco enderecoTeste =  endereco.cadastrarEndereco(new Endereco("", "78414A", null, "Garanhuns", "PE"));
+         Cliente clienteTesteR = cliente.cadastrarCliente(new Cliente("pedin_324", "saddsasad", "dassda", enderecoTeste));
 //         Cliente clienteTesteD = cliente.cadastrarCliente(new Cliente("pankada", "4232", "dadsa", enderecoTeste));
 
 //        Produto produto05 = produto.cadastrarProduto(new Produto("", -0 , 0.0, -5.0));

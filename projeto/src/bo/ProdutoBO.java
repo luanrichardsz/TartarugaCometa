@@ -34,6 +34,9 @@ public class ProdutoBO {
         if (produto.getNome() == null || produto.getNome().isEmpty()){
             errosCriacao.add("\nPreencha o nome do produto!");
         }
+        if (!produto.getNome().matches("^[a-zA-Zà-ü'\\s]{2,}$")){
+            errosCriacao.add("\nCaracteres invalidos no nome!");
+        }
     }
     private void validarEntradaPeso(Produto produto){
         if ( produto.getPeso() <= 0.0 ){
