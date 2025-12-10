@@ -21,10 +21,10 @@ public class EntregaController {
     }
 
     public void atualizarStatusEntrega(boolean realizada, int idEntrega) {
-        daoEntrega.atualizar(realizada, idEntrega);
+        boEntrega.validarAtualizar(realizada, idEntrega);
     }
 
     public void apagarEntrega(int idEntrega){
-        daoEntrega.apagar(idEntrega);
+        boEntrega.validarDeletar(idEntrega);
     }
 }

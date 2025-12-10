@@ -20,10 +20,10 @@ public class EnderecoController {
     }
 
     public void atualizarEndereco(String rua, String numero, String bairro, String cidade, String estado, int idEndereco){
-        daoEndereco.atualizar(rua, numero, bairro, cidade, estado, idEndereco);
+        boEndereco.validarAtualizar(rua, numero, bairro, cidade, estado, idEndereco);
     }
 
     public void apagarEndereco(int idEndereco){
-        daoEndereco.apagar(idEndereco);
+        boEndereco.validarDelete(idEndereco);
     }
 }

@@ -158,11 +158,34 @@ public class EntregaDAO {
 
             ps.setInt(1, idEntrega);
             ps.execute();
-            System.out.println("Entrega Deletada com Sucesso!");
+            System.out.println("Entrega com o ID: " + idEntrega + " Deletada com Sucesso!");
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int buscarPorId(int idEntrega){
+        String sql = "SELECT idEntrega FROM Entrega WHERE idEntrega = ?";
+
+        try (Connection cnn = connection.getConnection()) {
+            PreparedStatement ps = cnn.prepareStatement(sql);
+
+            ps.setInt(1, idEntrega);
+
+            ResultSet rs = ps.executeQuery();
+
+            idEntrega = 0;
+
+            while (rs.next()){
+                idEntrega = rs.getInt("idEntrega");
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return idEntrega;
     }
 
 }

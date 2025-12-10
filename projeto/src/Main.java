@@ -1,3 +1,4 @@
+import dao.EnderecoDAO;
 import model.*;
 import controller.*;
 
@@ -8,15 +9,15 @@ public class Main {
 
         EnderecoController endereco = new EnderecoController();
         ClienteController  cliente  = new ClienteController();
-        EntregaController  entrega   = new EntregaController();
-        ProdutoController  produto   = new ProdutoController();
+        EntregaController  entrega  = new EntregaController();
+        ProdutoController  produto  = new ProdutoController();
 
 //// --------------------------------------------------------------------------------------------------------------------------------
 
         // Cadastrando a Primeira Entrega
 
-//        Endereco endereco01 = endereco.cadastrarEndereco(new Endereco("1ª Travessa Padre Nóbrega", "201-A", "Cavaleiro", "Jaboatão dos Guararapes", "PE"));
-//        Endereco endereco02 = endereco.cadastrarEndereco(new Endereco("Pedra Grande", "84-B", "Jardim Maravilha", "Petrolina", "PE"));
+//        Endereco endereco01 = endereco.cadastrarEndereco(new Endereco("1ª Travessa Padre Nóbrega", "201A", "Cavaleiro", "Jaboatão dos Guararapes", "PE"));
+//        Endereco endereco02 = endereco.cadastrarEndereco(new Endereco("Pedra Grande", "84B", "Jardim Maravilha", "Petrolina", "PE"));
 //
 //        Cliente clienteR01 = cliente.cadastrarCliente(new Cliente("Miguel Levi", "73989153000187", "Miguel e Levi Transportes ME", endereco02));
 //        Cliente clienteD01 = cliente.cadastrarCliente(new Cliente("Alícia Raquel Aline Vieira", "22131982178", null, endereco01));
@@ -59,10 +60,10 @@ public class Main {
 //// --------------------------------------------------------------------------------------------------------------------------------
 ////         Cadastrando a Terceira Entrega (1 Produto)
 //
-//        Endereco endereco05 = endereco.cadastrarEndereco(new Endereco("Rua Plantão", "87-C", "Deputado José Antônio Liberato", "Caruaru", "PE"));
+//        Endereco endereco05 = endereco.cadastrarEndereco(new Endereco("Rua Plantão", "87C", "Deputado José Antônio Liberato", "Caruaru", "PE"));
 //        Endereco endereco06 = endereco.cadastrarEndereco(new Endereco("Rua João Ivo da Silva", "841", "Madalena", "Recife", "PE"));
 //
-//        Cliente clienteR03 = cliente.cadastrarCliente(new Cliente("Pietra e Maitê Doces & Salgados Ltda", "90192059000111", "Maipie Doces e Salgados", endereco05));
+//        Cliente clienteR03 = cliente.cadastrarCliente(new Cliente("Pietra e Maitê Doces e Salgados Ltda", "90192059000111", "Maipie Doces e Salgados", endereco05));
 //        Cliente clienteD03 = cliente.cadastrarCliente(new Cliente("Rebeca Laura Souza", "30007624425", null, endereco06));
 //
 //        Produto produto05 = produto.cadastrarProduto(new Produto("Pão Doce de Coco", 3.50 , 1.00, 10.00));
@@ -77,12 +78,12 @@ public class Main {
 // --------------------------------------------------------------------------------------------------------------------------------
 ////       TESTE
 
-         Endereco enderecoTeste =  endereco.cadastrarEndereco(new Endereco("", "78414A", null, "Garanhuns", "PE"));
-         Cliente clienteTesteR = cliente.cadastrarCliente(new Cliente("pedin_324", "saddsasad", "dassda", enderecoTeste));
+//         Endereco enderecoTeste =  endereco.cadastrarEndereco(new Endereco("", "78414A", null, "Garanhuns", "PE"));
+//         Cliente clienteTesteR = cliente.cadastrarCliente(new Cliente("pedin_324", "saddsasad", "dassda", enderecoTeste));
 //         Cliente clienteTesteD = cliente.cadastrarCliente(new Cliente("pankada", "4232", "dadsa", enderecoTeste));
 
 //        Produto produto05 = produto.cadastrarProduto(new Produto("", -0 , 0.0, -5.0));
-        ArrayList<ProdutoEntrega> mercadoriasEntrega = new ArrayList<>();
+//        ArrayList<ProdutoEntrega> mercadoriasEntrega = new ArrayList<>();
 //
 //        Entrega entregaTeste = entrega.cadastrarEntrega(new Entrega(false, clienteTesteR, clienteTesteD), mercadoriasEntrega);
 
@@ -92,19 +93,19 @@ public class Main {
 //         Funções
 
 //        endereco.listarEnderecos();
-//        endereco.atualizarEndereco("Rua Doelder Camara", "100-B" ,"Madalena", "Recife", "PE", 3);
-//        endereco.apagarEndereco(4); // Entender como burlar a dependencia e apagar somente o endereço
+//        endereco.atualizarEndereco("Rua Doelder Camara", "100B" ,"Madalena", "Recife", "PE", 1);
+//        endereco.apagarEndereco(3);
 
 //        cliente.listarClientes();
-//        cliente.deletarCliente(7);
+//        cliente.deletarCliente(6);
 
 //        produto.listarProdutos();
-//        produto.atualizarProduto("Feijão", 2000.00, 2.5, 8000.00, 1);
-//        produto.apagarProduto(1);
+//        produto.atualizarProduto("Feijão", 2000.00, 2.5, 8000.00, 5);
+//        produto.apagarProduto(2);
 
 //        entrega.listarEntregas();
 //        entrega.atualizarStatusEntrega(false, 1);
-//        entrega.apagarEntrega(3);
+//        entrega.apagarEntrega(1);
 
     }
 }

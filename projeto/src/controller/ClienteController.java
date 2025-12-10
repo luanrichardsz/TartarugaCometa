@@ -21,6 +21,6 @@ public class ClienteController {
     }
 
     public void deletarCliente(int idCliente){
-        daoCliente.apagar(idCliente);
+        boCliente.validarDeletar(idCliente);
     }
 }

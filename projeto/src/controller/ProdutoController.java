@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 public class ProdutoController {
     ProdutoDAO daoProduto = new ProdutoDAO();
-    ProdutoBO produtoBO = new ProdutoBO();
+    ProdutoBO boProduto = new ProdutoBO();
 
         public Produto cadastrarProduto(Produto produto){
             //Chamando a validação para validar e mandar para o banco de dados
-            produtoBO.validarCriacao(produto);
+            boProduto.validarCriacao(produto);
 
             return produto;
         }
@@ -22,10 +22,10 @@ public class ProdutoController {
         }
 
         public void atualizarProduto(String nome, double peso, double volume, double valor, int idProduto){
-            daoProduto.atualizar(nome, peso, volume, valor, idProduto);
+            boProduto.validarAtualizar(nome, peso, volume, valor, idProduto);
         }
 
         public void apagarProduto(int idProduto){
-            daoProduto.apagar(idProduto);
+            boProduto.validarDeletar(idProduto);
         }
 }

@@ -72,7 +72,7 @@ public class ClienteDAO {
         return clientes;
     }
 
-    public void apagar(Integer idCliente){
+    public void apagar(int idCliente){
         String sqlEntrega  = "DELETE FROM Entrega WHERE clienteremetente_id = ? OR clientedestinatario_id = ?";
         String sqlEndereco = "SELECT Endereco_ID FROM Cliente WHERE idCliente = ?";
         String sqlDeleteEndereco = "DELETE FROM Endereco WHERE idendereco = ?;";
@@ -115,11 +115,33 @@ public class ClienteDAO {
                 PreparedStatement psDeleteEndereco = cnn.prepareStatement(sqlDeleteEndereco);
                 psDeleteEndereco.setInt(1, idEndereco);
                 psDeleteEndereco.execute();
-                System.out.println("Endereço Deletado com Sucesso!");
+                System.out.println("Endereço Relacionado ao Cliente Deletado com Sucesso!");
             }
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int buscarPorId(int idCliente){
+        String sql = "SELECT idCliente FROM Cliente WHERE idCliente = ?";
+
+        try (Connection conn = connection.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, idCliente);
+
+            ResultSet rs = ps.executeQuery();
+
+            idCliente = 0;
+
+            while (rs.next()){
+                idCliente = rs.getInt("idCliente");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return idCliente;
     }
 }

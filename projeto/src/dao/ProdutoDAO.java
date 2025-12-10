@@ -100,11 +100,33 @@ public class ProdutoDAO {
 
             ps.setInt(1, idProduto);
             ps.execute();
-            System.out.println("Produto Deletado com Sucesso!");
+            System.out.println("Produto com o ID: " + idProduto + " Deletado com Sucesso!");
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int buscarPorId(int idProduto){
+        String sql = "SELECT idProduto FROM Produto WHERE idProduto = ?";
+
+        try(Connection cnn = connection.getConnection()) {
+            PreparedStatement ps = cnn.prepareStatement(sql);
+
+            ps.setInt(1, idProduto);
+
+            ResultSet rs = ps.executeQuery();
+
+            idProduto = 0;
+
+            while (rs.next()){
+                idProduto = rs.getInt("idProduto");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return idProduto;
     }
 
 }

@@ -109,4 +109,26 @@ public class EnderecoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public int buscarPorId(int idEndereco){
+        String sql = "SELECT idendereco FROM Endereco WHERE idendereco = ?";
+
+        try (Connection conn = connection.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, idEndereco);
+
+            ResultSet rs = ps.executeQuery();
+
+            idEndereco = 0;
+
+            while (rs.next()){
+                idEndereco = rs.getInt("idendereco");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return idEndereco;
+    }
 }
