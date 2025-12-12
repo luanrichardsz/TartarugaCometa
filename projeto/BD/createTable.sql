@@ -5,11 +5,13 @@ COMMIT; -- SALVAR AS MUDANÇAS FEITAS
 
 CREATE TABLE Endereco (
 	idEndereco SERIAL PRIMARY KEY,
+	cep VARCHAR(9),
 	cidade VARCHAR(58),
 	rua VARCHAR(80),
 	numero VARCHAR(10),
 	bairro VARCHAR(50),
-	estado VARCHAR(50)
+	estado VARCHAR(50),
+    complemento VARCHAR(100)
 );
 
 CREATE TABLE Cliente (
